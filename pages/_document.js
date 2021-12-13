@@ -45,34 +45,34 @@ class Document extends NextDocument {
                     <meta name="msapplication-TileColor" content="#da532c" />
                     <meta
                         name="msapplication-TileImage"
-                        content="https://www.idpelago.com/img/favicon-touch-logo-180x180.png"
+                        content="https://www.zurnal.co/img/favicon-touch-logo-180x180.png"
                     />
                     <link
                         rel="icon"
                         type="image/png"
                         sizes="16x16"
-                        href="https://www.idpelago.com/img/favicon-16x16.png"
+                        href="https://www.zurnal.co/img/favicon-16x16.png"
                     />
                     <link
                         rel="icon"
                         type="image/png"
                         sizes="32x32"
-                        href="https://www.idpelago.com/img/favicon-32x32.png"
+                        href="https://www.zurnal.co/img/favicon-32x32.png"
                     />
                     <link
                         rel="apple-touch-icon"
                         sizes="180x180"
-                        href="https://www.idpelago.com/img/favicon-touch-logo-180x180.png"
+                        href="https://www.zurnal.co/img/favicon-touch-logo-180x180.png"
                     />
                     <link
                         rel="apple-touch-icon"
                         sizes="192x192"
-                        href="https://www.idpelago.com/img/favicon-touch-logo-192x192.png"
+                        href="https://www.zurnal.co/img/favicon-touch-logo-192x192.png"
                     />
                     <link
                         rel="apple-touch-icon"
                         sizes="512x512"
-                        href="https://www.idpelago.com/img/favicon-touch-logo-512x512.png"
+                        href="https://www.zurnal.co/img/favicon-touch-logo-512x512.png"
                     />
                     <link rel="mask-icon" href="" color="#5bbad5" />
                     <link rel="dns-prefetch" href="//ajax.googleapis.com" />
@@ -90,8 +90,8 @@ class Document extends NextDocument {
 
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" strategy="lazyload" />
 
-                    <script src="http://utouchdesign.com/themes/envato/altroz_news/js/jquery-3.2.1.min.js"></script>
-                    <script src="http://utouchdesign.com/themes/envato/altroz_news/js/bootstrap.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
                     <script src="/scripts/main.js"></script>
                 </Head>
 
