@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 import Layout from "../Components/Layout";
 
 import { QueryClientProvider, QueryClient } from "react-query";
@@ -27,9 +29,9 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
-      <script src="/scripts/main.js"></script>
+      <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" strategy="afterInteractive" />
+      <Script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js" strategy="afterInteractive" />
+      <Script src="/scripts/main.js" strategy="afterInteractive" />
 
       <QueryClientProvider client={queryClient}>{withLayout}</QueryClientProvider>
     </>
