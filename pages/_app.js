@@ -25,7 +25,15 @@ const App = ({ Component, pageProps }) => {
   const children = <Component {...pageProps} />;
   const withLayout = Component.getLayout ?.(children) ?.(pageProps) ?? children;
 
-  return <QueryClientProvider client={queryClient}>{withLayout}</QueryClientProvider>
+  return (
+    <>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+      <script src="/scripts/main.js"></script>
+
+      <QueryClientProvider client={queryClient}>{withLayout}</QueryClientProvider>
+    </>
+  )
 }
 
 export default App;

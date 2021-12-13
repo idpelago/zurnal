@@ -1,4 +1,3 @@
-import Script from "next/script";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 
 class Document extends NextDocument {
@@ -89,10 +88,6 @@ class Document extends NextDocument {
                     <link rel="dns-prefetch" href="//connect.facebook.net" />
 
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" strategy="lazyload" />
-
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
-                    <script src="/scripts/main.js"></script>
                 </Head>
 
                 <body>
