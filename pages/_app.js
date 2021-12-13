@@ -25,7 +25,8 @@ const queryClient = new QueryClient(getQueryClientConfig());
 
 const App = ({ Component, pageProps }) => {
   const children = <Component {...pageProps} />;
-  const withLayout = Component.getLayout ?.(children) ?.(pageProps) ?? children;
+  const withLayout = Component.getLayout ?.(children) ?.(pageProps)
+    ? Component.getLayout ?.(children) ?.(pageProps) : children;
 
   return (
     <>
