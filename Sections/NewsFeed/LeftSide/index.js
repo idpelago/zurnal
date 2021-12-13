@@ -47,7 +47,7 @@ const NewsFeedLeftSection = () => {
                                             <span className="utf_post_date"><i className="fa fa-clock-o"></i> {post.published_at}</span>
                                         </div>
 
-                                        <p>{post.content}</p>
+                                        <p>{post.post_excerpt}</p>
                                     </div>
                                 </div>
                             )

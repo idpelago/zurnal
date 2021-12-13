@@ -3,7 +3,7 @@ import { filterQuery } from "./filter-query";
 function getAbsoluteURL(req, localhost) {
   let protocol = "https:";
   let host = req
-    ? req.headers["x-forwarded-host"] ?? req.headers["host"]
+    ? req.headers["x-forwarded-host"] ? req.headers["x-forwarded-host"] : req.headers["host"]
     : window.location.host;
   if (host.indexOf("localhost") > -1) {
     if (localhost) {
@@ -16,7 +16,7 @@ function getAbsoluteURL(req, localhost) {
 
 async function queryFn(context) {
   const [key, queries] = context.queryKey;
-  const nextQuery = context.pageParam ?? {};
+  const nextQuery = context.pageParam ? context.pageParam : {};
 
   const params = {
     ...queries,
