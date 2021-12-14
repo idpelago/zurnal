@@ -31,13 +31,13 @@ const App = ({ Component, pageProps }) => {
     <>
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
       />
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
       />
-      <Script src="/scripts/main.js" strategy="afterInteractive" />
+      <Script src="/scripts/main.js" strategy="beforeInteractive" />
 
       <QueryClientProvider client={queryClient}>
         {withLayout}

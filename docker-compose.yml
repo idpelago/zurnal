@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  frontend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/zurnal
+      - /zurnal/node_modules
+      - /zurnal/.next
+    env_file:
+      - .env.local
