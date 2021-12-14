@@ -67,7 +67,7 @@ const NewsFeedLeftSection = () => {
                         </span>
                       </div>
 
-                      <p>{post.post_excerpt}</p>
+                      <p>{post.excerpt}</p>
                     </div>
                   </div>
                 );

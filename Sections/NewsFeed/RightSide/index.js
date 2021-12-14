@@ -11,7 +11,7 @@ const NewsFeedRightSection = () => {
               <a href="#">
                 <img
                   className="img-fluid"
-                  src="images/news/lifestyle/health4.jpg"
+                  src="https://zurnal-assets.s3.ap-southeast-1.amazonaws.com/city.jpg"
                   alt=""
                 />
               </a>
@@ -44,7 +44,7 @@ const NewsFeedRightSection = () => {
                     <a href="#">
                       <img
                         className="img-fluid"
-                        src="images/news/tech/gadget3.jpg"
+                        src="https://zurnal-assets.s3.ap-southeast-1.amazonaws.com/city.jpg"
                         alt=""
                       />
                     </a>
@@ -76,7 +76,7 @@ const NewsFeedRightSection = () => {
                     <a href="#">
                       <img
                         className="img-fluid"
-                        src="images/news/lifestyle/travel5.jpg"
+                        src="https://zurnal-assets.s3.ap-southeast-1.amazonaws.com/city.jpg"
                         alt=""
                       />
                     </a>
@@ -108,7 +108,7 @@ const NewsFeedRightSection = () => {
                     <a href="#">
                       <img
                         className="img-fluid"
-                        src="images/news/tech/robot5.jpg"
+                        src="https://zurnal-assets.s3.ap-southeast-1.amazonaws.com/city.jpg"
                         alt=""
                       />
                     </a>
@@ -140,7 +140,7 @@ const NewsFeedRightSection = () => {
                     <a href="#">
                       <img
                         className="img-fluid"
-                        src="images/news/tech/gadget2.jpg"
+                        src="https://zurnal-assets.s3.ap-southeast-1.amazonaws.com/city.jpg"
                         alt=""
                       />
                     </a>
