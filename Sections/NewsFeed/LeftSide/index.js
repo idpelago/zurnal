@@ -53,8 +53,7 @@ const NewsFeedLeftSection = () => {
                           shallow
                           passHref
                         >
-                          Ratcliffe to be Director of intelligence Trump ignored
-                          smart innocent...
+                          {post.title}
                         </Link>
                       </h2>
 
