@@ -1,4 +1,3 @@
-
 import AdsSection from "../Sections/Ads";
 import FeaturedSection from "../Sections/Featured";
 import NewsFeedSection from "../Sections/NewsFeed";
@@ -11,19 +10,17 @@ import WithLayout from "../Components/WithLayout";
 const Index = () => {
   return (
     <>
-      <FeaturedSection />
+      {/* <FeaturedSection /> */}
 
-      <CategoriesFeedSection />
-      <HorizontalFeedSection />
+      {/* <CategoriesFeedSection /> */}
+      {/* <HorizontalFeedSection /> */}
 
       <NewsFeedSection />
-      <AdsSection />
+      {/* <AdsSection /> */}
     </>
-  )
-}
+  );
+};
 
 export default WithLayout((children) => (props) => (
-  <Layout {...props}>
-    {children}
-  </Layout>
+  <Layout {...props}>{children}</Layout>
 ))(Index);

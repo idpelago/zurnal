@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from "next/head";
+import Image from "next/image";
 import Script from "next/script";
 
 import HeaderSection from "../../Sections/Header";
@@ -9,17 +9,17 @@ import TopBarSection from "../../Sections/TopBar";
 import MainNavSection from "../../Sections/MainNav";
 
 const Layout = ({ children }) => {
-    return (
-        <div className="body-inner">
-            <TopBarSection />
-            <HeaderSection />
-            <MainNavSection />
+  return (
+    <div className="body-inner">
+      <TopBarSection />
+      <HeaderSection />
+      <MainNavSection />
 
-            {children}
+      {children}
 
-            <FooterSection />
-        </div>
-    );
-}
+      <FooterSection />
+    </div>
+  );
+};
 
 export default Layout;

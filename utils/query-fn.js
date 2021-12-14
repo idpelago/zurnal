@@ -3,7 +3,9 @@ import { filterQuery } from "./filter-query";
 function getAbsoluteURL(req, localhost) {
   let protocol = "https:";
   let host = req
-    ? req.headers["x-forwarded-host"] ? req.headers["x-forwarded-host"] : req.headers["host"]
+    ? req.headers["x-forwarded-host"]
+      ? req.headers["x-forwarded-host"]
+      : req.headers["host"]
     : window.location.host;
   if (host.indexOf("localhost") > -1) {
     if (localhost) {
