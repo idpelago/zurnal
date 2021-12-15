@@ -6,6 +6,7 @@ export const getPosts = async ({ page }) => {
 
 export const getPost = async ({ postSlugId, postSlugTitle, page = null }) => {
   let postQuery = {};
+
   if (page !== null) postQuery.page = page;
 
   return await api(`GET`, `post/${postSlugId}/${postSlugTitle}`, {
