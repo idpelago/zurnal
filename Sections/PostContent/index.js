@@ -50,7 +50,11 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
             <div className="post-tags">
               <span>Tags:</span>
               {post.tags.map((tag, index) => {
-                return <a href="#"># {tag.name}</a>;
+                return (
+                  <a key={index} href="#">
+                    # {tag.name}
+                  </a>
+                );
               })}
             </div>
           </div>

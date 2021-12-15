@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 
@@ -9,9 +9,13 @@ import PostListSkeleton from "../../../Components/PostListSkeleton";
 
 const NewsFeedLeftSection = () => {
   const router = useRouter();
-  const { currentPage = 1 } = router.query;
+  const { page: currentPage = 1 } = router.query;
 
   const [page, setPage] = useState(currentPage);
+
+  useEffect(() => {
+    setPage(currentPage);
+  }, [currentPage]);
 
   const { isLoading, error, data } = useQuery(["posts", { page }], {
     staleTime: 5 * 60 * 1000,
