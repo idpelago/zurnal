@@ -11,7 +11,7 @@ const User = () => {
 
     const queryKey = `user/${username}`;
 
-    return <NewsFeedSection queryKey={queryKey} />;
+    return <NewsFeedSection pageType={`${username}'s`} queryKey={queryKey} />;
 }
 
 export default WithLayout((children) => (props) => (

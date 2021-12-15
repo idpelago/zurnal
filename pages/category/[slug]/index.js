@@ -11,7 +11,7 @@ const Category = () => {
 
     const queryKey = `category/${slug}`;
 
-    return <NewsFeedSection queryKey={queryKey} />;
+    return <NewsFeedSection pageType={`${slug}`} queryKey={queryKey} />;
 }
 
 export default WithLayout((children) => (props) => (

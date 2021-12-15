@@ -1,50 +1,4 @@
-import Link from "next/link";
-
-const PostLink = ({ elem, children }) => {
-  return (
-    <Link
-      href={{
-        pathname: `/post/${elem.post_slug_id}/${elem.post_slug_title}`,
-      }}
-      as={`/post/${elem.post_slug_id}/${elem.post_slug_title}`}
-      shallow
-      passHref
-    >
-      {children}
-    </Link>
-  );
-};
-
-const UserLink = ({ elem, children }) => {
-  return (
-    <Link
-      href={{
-        pathname: `/user/${elem.username}`,
-      }}
-      as={`/user/${elem.username}`}
-      shallow
-      passHref
-    >
-      {children}
-    </Link>
-  );
-};
-
-const CategoryLink = ({ elem, children }) => {
-  return (
-    <Link
-      className="utf_post_cat"
-      href={{
-        pathname: `/category/${elem.category.slug}`,
-      }}
-      as={`/category/${elem.category.slug}`}
-      shallow
-      passHref
-    >
-      {children}
-    </Link>
-  );
-}
+import { CategoryLink, PostLink, UserLink } from "../../utils/link-generator";
 
 const PostList = ({ elem }) => {
   return (
@@ -55,7 +9,9 @@ const PostList = ({ elem }) => {
         </PostLink>
       </div>
 
-      <CategoryLink>{elem.category.name}</CategoryLink>
+      <CategoryLink elem={elem}>
+        <a className="utf_post_cat">{elem.category.name}</a>
+      </CategoryLink>
 
       <div className="utf_post_content">
         <h2 className="utf_post_title">

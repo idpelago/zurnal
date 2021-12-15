@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import Pagination from "@material-ui/lab/Pagination";
 
 import PostContentSkeleton from "../../Components/PostContentSkeleton";
+
+import { CategoryLink, TagLink, UserLink } from '../../utils/link-generator';
 
 const PostContentSection = ({ postSlugId, postSlugTitle }) => {
   const router = useRouter();
@@ -42,13 +44,14 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
     <div className="col-lg-8 col-md-12">
       <div className="single-post">
         <div className="utf_post_title-area">
-          <a className="utf_post_cat" href="#">
-            {post.category.name}
-          </a>
+          <CategoryLink elem={post}>
+            <a className="utf_post_cat">{post.category.name}</a>
+          </CategoryLink>
+
           <h2 className="utf_post_title">{post.title}</h2>
           <div className="utf_post_meta">
             <span className="utf_post_author">
-              By <a href="#">{post.user.display_name}</a>
+              By <UserLink elem={post.user}>{post.user.display_name}</UserLink>
             </span>
             <span className="utf_post_date">
               <i className="fa fa-clock-o"></i> {post.published_at}
@@ -58,13 +61,11 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
 
         <div className="utf_post_content-area">
           <div className="post-media post-featured-image">
-            <a href={post.featured_image} className="gallery-popup cboxElement">
-              <img
-                src={post.featured_image}
-                className="img-fluid"
-                alt={post.title}
-              />
-            </a>
+            <img
+              src={post.featured_image}
+              className="img-fluid"
+              alt={post.title}
+            />
           </div>
 
           <div
@@ -88,11 +89,7 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
             <div className="post-tags">
               <span>Tags:</span>
               {post.tags.map((tag, index) => {
-                return (
-                  <a key={index} href="#">
-                    # {tag.name}
-                  </a>
-                );
+                return <TagLink key={index} elem={tag}>{`# ${tag.name}`}</TagLink>;
               })}
             </div>
           </div>

@@ -7,7 +7,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import PostList from "../../../Components/PostList";
 import PostListSkeleton from "../../../Components/PostListSkeleton";
 
-const NewsFeedLeftSection = ({ queryKey = 'posts' }) => {
+const NewsFeedLeftSection = ({ queryKey = 'posts', pageType = 'index' }) => {
   const router = useRouter();
   const { page: currentPage = 1 } = router.query;
 
@@ -45,10 +45,18 @@ const NewsFeedLeftSection = ({ queryKey = 'posts' }) => {
     });
   };
 
+  const PageTypeSection = () => {
+    return (
+      <>
+        {(pageType != 'index') ? <h3 class="utf_block_title"><span>{pageType} News</span></h3> : null}
+      </>
+    );
+  }
+
   return (
     <div className="col-lg-8 col-md-12">
       <div className="utf_more_news block color-default">
-        {/* <h3 className="utf_block_title"><span>View More News</span></h3> */}
+        <PageTypeSection />
 
         <div id="utf_more_news_slide" className="utf_more_news_slide">
           <div className="item">

@@ -11,7 +11,11 @@ const Tag = () => {
 
     const queryKey = `tag/${slug}`;
 
-    return <NewsFeedSection queryKey={queryKey} />;
+    return (
+        <NewsFeedSection
+            pageType={`# ${slug}`}
+            queryKey={queryKey} />
+    );
 }
 
 export default WithLayout((children) => (props) => (
