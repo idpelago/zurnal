@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const MainNavSection = () => {
   return (
     <div className="utf_main_nav_area clearfix utf_sticky">
@@ -22,9 +24,9 @@ const MainNavSection = () => {
               >
                 <ul className="nav navbar-nav">
                   <li className="nav-item">
-                    <a href="#" className="nav-link">
+                    <Link href={{ pathname: `/` }} className="nav-link">
                       Home
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

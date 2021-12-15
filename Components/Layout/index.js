@@ -11,7 +11,7 @@ import MainNavSection from "../../Sections/MainNav";
 const Layout = ({ children }) => {
   return (
     <div className="body-inner">
-      <TopBarSection />
+      {/* <TopBarSection /> */}
       <HeaderSection />
       <MainNavSection />
 

@@ -2,7 +2,7 @@ const NewsFeedRightSection = () => {
   return (
     <div className="col-lg-4 col-md-12">
       <div className="sidebar utf_sidebar_right">
-        <div className="widget color-default">
+        {/* <div className="widget color-default">
           <h3 className="utf_block_title">
             <span>Popular News</span>
           </h3>
@@ -167,12 +167,12 @@ const NewsFeedRightSection = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </div> */}
 
         <div className="widget m-bottom-0">
-          <h3 className="utf_block_title">
+          {/* <h3 className="utf_block_title">
             <span>Newsletter</span>
-          </h3>
+          </h3> */}
           <div className="utf_newsletter_block">
             <div className="utf_newsletter_introtext">
               <h4>Subscribe Newsletter!</h4>

@@ -1,7 +1,4 @@
 import Script from "next/script";
-
-import Layout from "../Components/Layout";
-
 import { QueryClientProvider, QueryClient } from "react-query";
 
 import queryFn from "../utils/query-fn";

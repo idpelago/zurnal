@@ -46,9 +46,9 @@ const NewsFeedLeftSection = () => {
   return (
     <div className="col-lg-8 col-md-12">
       <div className="utf_more_news block color-default">
-        <h3 className="utf_block_title">
+        {/* <h3 className="utf_block_title">
           <span>View More News</span>
-        </h3>
+        </h3> */}
         <div
           id="utf_more_news_slide"
           className="owl-carousel owl-theme utf_more_news_slide"
@@ -57,7 +57,10 @@ const NewsFeedLeftSection = () => {
             {posts &&
               posts.map((post, index) => {
                 return (
-                  <div className="utf_post_block_style utf_post_float_half clearfix">
+                  <div
+                    key={index}
+                    className="utf_post_block_style utf_post_float_half clearfix"
+                  >
                     <div className="utf_post_thumb">
                       <PostLink elem={post}>
                         <img
@@ -96,7 +99,6 @@ const NewsFeedLeftSection = () => {
               })}
           </div>
         </div>
-        ); })}
       </div>
     </div>
   );
