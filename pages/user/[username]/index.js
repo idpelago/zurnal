@@ -4,6 +4,7 @@ import NewsFeedSection from "../../../Sections/NewsFeed";
 
 import Layout from "../../../Components/Layout";
 import WithLayout from "../../../Components/WithLayout";
+import MetaHeader from "../../../Components/MetaHeader";
 
 const User = () => {
     const router = useRouter();
@@ -11,7 +12,17 @@ const User = () => {
 
     const queryKey = `user/${username}`;
 
-    return <NewsFeedSection pageType={`${username}'s`} queryKey={queryKey} />;
+    return (
+        <>
+            <MetaHeader
+                title={username}
+                description={`cari semua artikel dari ${username} hanya di Zurnal.co`}
+                type="user"
+            />
+
+            <NewsFeedSection pageType={`${username}'s`} queryKey={queryKey} />
+        </>
+    );
 }
 
 export default WithLayout((children) => (props) => (

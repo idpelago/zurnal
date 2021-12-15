@@ -6,12 +6,15 @@ import HorizontalFeedSection from "../Sections/HorizontalFeed";
 
 import Layout from "../Components/Layout";
 import WithLayout from "../Components/WithLayout";
+import MetaHeader from "../Components/MetaHeader";
 
 const Index = () => {
   const queryKey = `posts`;
 
   return (
     <>
+      <MetaHeader type="index" />
+
       {/* <FeaturedSection /> */}
 
       {/* <CategoriesFeedSection /> */}

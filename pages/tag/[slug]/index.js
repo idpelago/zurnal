@@ -4,6 +4,7 @@ import NewsFeedSection from "../../../Sections/NewsFeed";
 
 import Layout from "../../../Components/Layout";
 import WithLayout from "../../../Components/WithLayout";
+import MetaHeader from "../../../Components/MetaHeader";
 
 const Tag = () => {
     const router = useRouter();
@@ -12,9 +13,15 @@ const Tag = () => {
     const queryKey = `tag/${slug}`;
 
     return (
-        <NewsFeedSection
-            pageType={`# ${slug}`}
-            queryKey={queryKey} />
+        <>
+            <MetaHeader
+                title={slug}
+                description={`cari semua artikel dengan tagar ${slug} hanya di Zurnal.co`}
+                type="tag"
+            />
+
+            <NewsFeedSection pageType={`# ${slug}`} queryKey={queryKey} />
+        </>
     );
 }
 

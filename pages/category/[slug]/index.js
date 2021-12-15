@@ -4,6 +4,7 @@ import NewsFeedSection from "../../../Sections/NewsFeed";
 
 import Layout from "../../../Components/Layout";
 import WithLayout from "../../../Components/WithLayout";
+import MetaHeader from "../../../Components/MetaHeader";
 
 const Category = () => {
     const router = useRouter();
@@ -11,7 +12,17 @@ const Category = () => {
 
     const queryKey = `category/${slug}`;
 
-    return <NewsFeedSection pageType={`${slug}`} queryKey={queryKey} />;
+    return (
+        <>
+            <MetaHeader
+                title={slug}
+                description={`cari semua artikel dari kategori ${slug} hanya di Zurnal.co`}
+                type="category"
+            />
+
+            <NewsFeedSection pageType={`${slug}`} queryKey={queryKey} />
+        </>
+    );
 }
 
 export default WithLayout((children) => (props) => (
