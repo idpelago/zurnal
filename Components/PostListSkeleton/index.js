@@ -26,17 +26,17 @@ const PostListSkeleton = () => {
       </>
     );
   };
+
   const MobileSkeleton = () => {
     return (
       <>
         <rect x="0" y="0" rx="3" ry="3" width="100%" height="240" />
-
         <rect x="0" y="263" rx="3" ry="3" width="100%" height="25" />
-
         <rect x="0" y="303" rx="3" ry="3" width="100%" height="50" />
       </>
     );
   };
+
   const Skeleton = () => {
     return (
       <ContentLoader
@@ -51,6 +51,7 @@ const PostListSkeleton = () => {
       </ContentLoader>
     );
   };
+
   return (
     <div className="col-lg-8 col-md-12">
       <div className="utf_more_news block color-default">

@@ -30,18 +30,32 @@ const UserLink = ({ elem, children }) => {
   );
 };
 
+const CategoryLink = ({ elem, children }) => {
+  return (
+    <Link
+      className="utf_post_cat"
+      href={{
+        pathname: `/category/${elem.category.slug}`,
+      }}
+      as={`/category/${elem.category.slug}`}
+      shallow
+      passHref
+    >
+      {children}
+    </Link>
+  );
+}
+
 const PostList = ({ elem }) => {
   return (
     <div className="utf_post_block_style utf_post_float_half clearfix">
       <div className="utf_post_thumb">
         <PostLink elem={elem}>
-          <img className="img-fluid" src={elem.featured_image} alt="" />
+          <img className="img-fluid" src={elem.featured_image} alt={elem.title} />
         </PostLink>
       </div>
 
-      <a className="utf_post_cat" href="#">
-        {elem.category.name}
-      </a>
+      <CategoryLink>{elem.category.name}</CategoryLink>
 
       <div className="utf_post_content">
         <h2 className="utf_post_title">
@@ -50,7 +64,7 @@ const PostList = ({ elem }) => {
 
         <div className="utf_post_meta">
           <span className="utf_post_author">
-            <i className="fa fa-user"></i>{" "}
+            <i className="fa fa-user"></i>
             <UserLink elem={elem.user}>{elem.user.display_name}</UserLink>
           </span>
           <span className="utf_post_date">
