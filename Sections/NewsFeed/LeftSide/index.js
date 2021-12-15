@@ -2,7 +2,9 @@ import Link from "next/link";
 import { useQuery } from "react-query";
 
 const NewsFeedLeftSection = () => {
-  const { isLoading, error, data } = useQuery("posts");
+  const { isLoading, error, data } = useQuery("posts", {
+    staleTime: 5 * 60 * 1000,
+  });
 
   if (isLoading) return "Loading...";
 

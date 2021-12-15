@@ -1,10 +1,12 @@
 import { useQuery } from "react-query";
 
 const PostContentSection = ({ postSlugId, postSlugTitle }) => {
-  const { isLoading, data } = useQuery([`post/${postSlugId}/${postSlugTitle}`]);
-  if (isLoading) return "Loading...";
+  const { isLoading, data } = useQuery(
+    [`post/${postSlugId}/${postSlugTitle}`],
+    { staleTime: 5 * 60 * 1000 }
+  );
 
-  if (error) return "An error has occurred: " + error.message;
+  if (isLoading) return "Loading...";
 
   const { items: post } = data;
 
@@ -12,41 +14,27 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
     <div className="col-lg-8 col-md-12">
       <div className="single-post">
         <div className="utf_post_title-area">
-          {" "}
           <a className="utf_post_cat" href="#">
             {post.category.name}
           </a>
           <h2 className="utf_post_title">{post.title}</h2>
           <div className="utf_post_meta">
             <span className="utf_post_author">
-              {" "}
-              By <a href="#">John Wick</a>{" "}
+              By <a href="#">{post.user.display_name}</a>
             </span>
             <span className="utf_post_date">
-              <i className="fa fa-clock-o"></i> 15 Jan, 2021
-            </span>
-            <span className="post-hits">
-              <i className="fa fa-eye"></i> 21
-            </span>
-            <span className="post-comment">
-              <i className="fa fa-comments-o"></i>
-              <a href="#" className="comments-link">
-                <span>01</span>
-              </a>
+              <i className="fa fa-clock-o"></i> {post.published_at}
             </span>
           </div>
         </div>
 
         <div className="utf_post_content-area">
           <div className="post-media post-featured-image">
-            <a
-              href="images/news/lifestyle/health5.jpg"
-              className="gallery-popup cboxElement"
-            >
+            <a href={post.featured_image} className="gallery-popup cboxElement">
               <img
-                src="images/news/lifestyle/health5.jpg"
+                src={post.featured_image}
                 className="img-fluid"
-                alt=""
+                alt={post.title}
               />
             </a>
           </div>
@@ -61,46 +49,37 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
           <div className="tags-area clearfix">
             <div className="post-tags">
               <span>Tags:</span>
-              <a href="#"># Business</a>
-              <a href="#"># Corporate</a>
-              <a href="#"># Services</a>
-              <a href="#"># Customer</a>
+              {post.tags.map((tag, index) => {
+                return <a href="#"># {tag.name}</a>;
+              })}
             </div>
           </div>
 
           <div className="share-items clearfix">
             <ul className="post-social-icons unstyled">
               <li className="facebook">
-                {" "}
                 <a href="#">
-                  {" "}
-                  <i className="fa fa-facebook"></i>{" "}
+                  <i className="fa fa-facebook"></i>
                   <span className="ts-social-title">Facebook</span>
-                </a>{" "}
+                </a>
               </li>
               <li className="twitter">
-                {" "}
                 <a href="#">
-                  {" "}
-                  <i className="fa fa-twitter"></i>{" "}
+                  <i className="fa fa-twitter"></i>
                   <span className="ts-social-title">Twitter</span>
-                </a>{" "}
+                </a>
               </li>
               <li className="gplus">
-                {" "}
                 <a href="#">
-                  {" "}
-                  <i className="fa fa-google-plus"></i>{" "}
+                  <i className="fa fa-google-plus"></i>
                   <span className="ts-social-title">Google +</span>
-                </a>{" "}
+                </a>
               </li>
               <li className="pinterest">
-                {" "}
                 <a href="#">
-                  {" "}
-                  <i className="fa fa-pinterest"></i>{" "}
+                  <i className="fa fa-pinterest"></i>
                   <span className="ts-social-title">Pinterest</span>
-                </a>{" "}
+                </a>
               </li>
             </ul>
           </div>
@@ -118,7 +97,6 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
         </div>
         <div className="post-next">
           <a href="#">
-            {" "}
             <span>
               Next Post <i className="fa fa-angle-right"></i>
             </span>
@@ -126,22 +104,6 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
           </a>
         </div>
       </nav>
-
-      <div className="author-box">
-        <div className="author-img pull-left">
-          {" "}
-          <img src="images/news/author.png" alt="" />{" "}
-        </div>
-        <div className="author-info">
-          <h3>Miss Lisa Doe</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since It has survived not only five centuries, but also the
-            leap into electronic type setting, remaining essentially unchanged.
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
