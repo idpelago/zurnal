@@ -55,7 +55,7 @@ const NewsFeedLeftSection = () => {
 
   const handlePaginationChange = (e, value) => {
     setPage(value);
-    router.push(`?page=${value}`, undefined, { shallow: true });
+    router.push(`?page=${value}`, undefined, { scroll: true });
   };
 
   return (
