@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 
-const PostContent = ({ postSlugId, postSlugTitle }) => {
+const PostContentSection = ({ postSlugId, postSlugTitle }) => {
     const { isLoading, data } = useQuery([`post/${postSlugId}/${postSlugTitle}`]);
     if (isLoading) return 'Loading...'
 
@@ -81,4 +81,4 @@ const PostContent = ({ postSlugId, postSlugTitle }) => {
     );
 }
 
-export default PostContent;
+export default PostContentSection;
