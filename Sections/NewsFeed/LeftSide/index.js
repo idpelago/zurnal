@@ -1,9 +1,19 @@
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 
+import Pagination from "@material-ui/lab/Pagination";
+
 const NewsFeedLeftSection = () => {
-  const { isLoading, error, data } = useQuery("posts", {
+  const router = useRouter();
+  const { currentPage = 1 } = router.query;
+
+  const [page, setPage] = useState(currentPage);
+
+  const { isLoading, error, data } = useQuery(["posts", { page }], {
     staleTime: 5 * 60 * 1000,
+    keepPreviousData: true,
   });
 
   if (isLoading) return "Loading...";
@@ -41,6 +51,11 @@ const NewsFeedLeftSection = () => {
         {children}
       </Link>
     );
+  };
+
+  const handlePaginationChange = (e, value) => {
+    setPage(value);
+    router.push(`?page=${value}`, undefined, { shallow: true });
   };
 
   return (
@@ -99,6 +114,15 @@ const NewsFeedLeftSection = () => {
               })}
           </div>
         </div>
+
+        <Pagination
+          count={items.last_page}
+          variant="outlined"
+          color="primary"
+          className="paging"
+          page={items.current_page}
+          onChange={handlePaginationChange}
+        />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
 
 import queryFn from "../utils/query-fn";
@@ -38,6 +39,7 @@ const App = ({ Component, pageProps }) => {
 
       <QueryClientProvider client={queryClient}>
         {withLayout}
+        <ReactQueryDevtools position="bottom-right" />
       </QueryClientProvider>
     </>
   );
