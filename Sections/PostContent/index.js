@@ -13,10 +13,10 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
 
   useEffect(() => {
     setPage(currentPage);
-  }, [currentPage]);
+  }, [page]);
 
   const { isLoading, data } = useQuery(
-    [`post/${postSlugId}/${postSlugTitle}`, [page]],
+    [`post/${postSlugId}/${postSlugTitle}`, { page }],
     { staleTime: 5 * 60 * 1000 }
   );
 
@@ -26,8 +26,15 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
 
   const handlePaginationChange = (e, value) => {
     setPage(value);
-    router.push(`?page=${value}`, undefined, {
-      scroll: true,
+
+    router.push({
+      pathname: router.pathname,
+      query: {
+        ...router.query,
+        postSlugId: postSlugId,
+        postSlugTitle: postSlugTitle,
+        page: value
+      }
     });
   };
 
@@ -67,6 +74,7 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
             }}
           ></div>
 
+          {post.post_paginate_total > 1 ? <h2>Halaman Berikutnya :</h2> : null}
           <Pagination
             count={post.post_paginate_total}
             variant="outlined"
