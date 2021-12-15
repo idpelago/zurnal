@@ -30,12 +30,9 @@ const UserLink = ({ elem, children }) => {
   );
 };
 
-const PostList = ({ elem, index }) => {
+const PostList = ({ elem }) => {
   return (
-    <div
-      key={index}
-      className="utf_post_block_style utf_post_float_half clearfix"
-    >
+    <div className="utf_post_block_style utf_post_float_half clearfix">
       <div className="utf_post_thumb">
         <PostLink elem={elem}>
           <img className="img-fluid" src={elem.featured_image} alt="" />

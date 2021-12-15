@@ -35,15 +35,12 @@ const NewsFeedLeftSection = () => {
   return (
     <div className="col-lg-8 col-md-12">
       <div className="utf_more_news block color-default">
-        {/* <h3 className="utf_block_title">
-          <span>View More News</span>
-        </h3> */}
+        {/* <h3 className="utf_block_title"><span>View More News</span></h3> */}
+
         <div id="utf_more_news_slide" className="utf_more_news_slide">
           <div className="item">
             {posts &&
-              posts.map((post, index) => {
-                return <PostList elem={post} index={index} />;
-              })}
+              posts.map((post, index) => <PostList key={index} elem={post} />)}
           </div>
         </div>
 
