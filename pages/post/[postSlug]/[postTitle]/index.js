@@ -3,14 +3,20 @@ import { useRouter } from "next/router";
 import Layout from "../../../../Components/Layout";
 import WithLayout from "../../../../Components/WithLayout";
 
+import NewsFeedRightSection from "../../../../Sections/NewsFeed/RightSide";
+
 const PostContent = (props) => {
     const router = useRouter();
     const { postSlugId, postSlugTitle } = router.query;
 
     return (
-        <>
-            Content
-        </>
+        <section className="utf_block_wrapper">
+            <div className="container">
+                <div className="row">
+                    <NewsFeedRightSection />
+                </div>
+            </div>
+        </section>
     )
 }
 

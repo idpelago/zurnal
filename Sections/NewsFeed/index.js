@@ -3,7 +3,7 @@ import NewsFeedRightSection from "./RightSide";
 
 const NewsFeedSection = () => {
   return (
-    <section className="utf_block_wrapper p-bottom-0">
+    <section className="utf_block_wrapper">
       <div className="container">
         <div className="row">
           <NewsFeedLeftSection />
