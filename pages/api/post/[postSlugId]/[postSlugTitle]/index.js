@@ -1,6 +1,7 @@
 import { getPost } from "../../../../../apis";
+import protectApi from "../../../../../middleware/protectApi";
 
-export default async function postHandler(req, res) {
+async function postHandler(req, res) {
   const { ...queries } = req.query;
 
   const post = await getPost({
@@ -9,3 +10,5 @@ export default async function postHandler(req, res) {
 
   res.status(200).json(post);
 }
+
+export default protectApi(postHandler);
