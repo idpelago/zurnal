@@ -1,4 +1,5 @@
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
 
