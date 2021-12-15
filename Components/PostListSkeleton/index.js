@@ -18,22 +18,22 @@ const PostListSkeleton = () => {
   const DesktopSkeleton = () => {
     return (
       <>
-        <rect x="0" y="17" rx="3" ry="3" width="40%" height="200" />
-        <rect x="42%" y="17" rx="3" ry="3" width="60%" height="25" />
-        <rect x="42%" y="57" rx="3" ry="3" width="40%" height="25" />
+        <rect x="0" y="0" rx="3" ry="3" width="40%" height="200" />
+        <rect x="42%" y="0" rx="3" ry="3" width="60%" height="25" />
+        <rect x="42%" y="40" rx="3" ry="3" width="40%" height="25" />
 
-        <rect x="42%" y="100" rx="3" ry="3" width="60%" height="115" />
+        <rect x="42%" y="83" rx="3" ry="3" width="60%" height="115" />
       </>
     );
   };
   const MobileSkeleton = () => {
     return (
       <>
-        <rect x="0" y="17" rx="3" ry="3" width="100%" height="240" />
+        <rect x="0" y="0" rx="3" ry="3" width="100%" height="240" />
 
-        <rect x="0" y="270" rx="3" ry="3" width="100%" height="25" />
+        <rect x="0" y="263" rx="3" ry="3" width="100%" height="25" />
 
-        <rect x="0" y="310" rx="3" ry="3" width="100%" height="50" />
+        <rect x="0" y="303" rx="3" ry="3" width="100%" height="50" />
       </>
     );
   };
@@ -43,7 +43,7 @@ const PostListSkeleton = () => {
         speed={2}
         style={{ width: "100%" }}
         width={"100%"}
-        height={mode == "desktop" ? 240 : 390}
+        height={mode == "desktop" ? 223 : 383}
         backgroundColor={"#f3f3f3"}
         foregroundColor={"#ecebeb"}
       >

@@ -27,6 +27,15 @@ const NewsFeedLeftSection = () => {
   if (error) return "An error has occurred: " + error.message;
 
   const { items } = data;
+
+  if (!items) return (
+    <div className="col-lg-8 col-md-12">
+      <div className="utf_more_news block color-default">
+        Something is wrong...
+      </div>
+    </div>
+  );
+
   const { data: posts } = items;
 
   const handlePaginationChange = (e, value) => {
