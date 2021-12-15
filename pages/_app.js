@@ -4,7 +4,13 @@ import { QueryClientProvider, QueryClient } from "react-query";
 
 import queryFn from "../utils/query-fn";
 
+import "nprogress/nprogress.css";
 import "../styles/globals.scss";
+
+const TopProgressBar = dynamic(
+  () => import("../Components/TopProgressBar"),
+  { ssr: false },
+);
 
 const getQueryClientConfig = (req) => ({
   defaultOptions: {
@@ -23,7 +29,7 @@ const queryClient = new QueryClient(getQueryClientConfig());
 
 const App = ({ Component, pageProps }) => {
   const children = <Component {...pageProps} />;
-  const withLayout = Component.getLayout?.(children)?.(pageProps) ?? children;
+  const withLayout = Component.getLayout ?.(children) ?.(pageProps) ?? children;
 
   return (
     <>
@@ -36,6 +42,8 @@ const App = ({ Component, pageProps }) => {
         strategy="beforeInteractive"
       />
       <Script src="/scripts/main.js" strategy="beforeInteractive" />
+
+      <TopProgressBar />
 
       <QueryClientProvider client={queryClient}>
         {withLayout}
