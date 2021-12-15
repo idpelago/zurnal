@@ -38,10 +38,7 @@ const NewsFeedLeftSection = () => {
         {/* <h3 className="utf_block_title">
           <span>View More News</span>
         </h3> */}
-        <div
-          id="utf_more_news_slide"
-          className="owl-carousel owl-theme utf_more_news_slide"
-        >
+        <div id="utf_more_news_slide" className="utf_more_news_slide">
           <div className="item">
             {posts &&
               posts.map((post, index) => {

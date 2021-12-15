@@ -22,10 +22,7 @@ const PostListSkeleton = () => {
   return (
     <div className="col-lg-8 col-md-12">
       <div className="utf_more_news block color-default">
-        <div
-          id="utf_more_news_slide"
-          className="owl-carousel owl-theme utf_more_news_slide"
-        >
+        <div id="utf_more_news_slide" className="utf_more_news_slide">
           <div className="item">
             <Skeleton />
             <Skeleton />
