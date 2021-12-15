@@ -1,10 +1,12 @@
 import ContentLoader from "react-content-loader";
 import { useEffect, useState } from "react";
 
-const PostListSkeleton = () => {
-  let width,
-    minWidth = 768;
+import config from "../../utils/config";
 
+const PostListSkeleton = () => {
+  let width;
+
+  const { minWidth } = config;
   const [mode, setMode] = useState("desktop");
 
   useEffect(() => {

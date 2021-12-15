@@ -1,12 +1,14 @@
 import { useQuery } from "react-query";
 
+import PostContentSkeleton from "../../Components/PostContentSkeleton";
+
 const PostContentSection = ({ postSlugId, postSlugTitle }) => {
   const { isLoading, data } = useQuery(
     [`post/${postSlugId}/${postSlugTitle}`],
     { staleTime: 5 * 60 * 1000 }
   );
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <PostContentSkeleton />;
 
   const { items: post } = data;
 
