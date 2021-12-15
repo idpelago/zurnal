@@ -7,7 +7,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import PostList from "../../../Components/PostList";
 import PostListSkeleton from "../../../Components/PostListSkeleton";
 
-const NewsFeedLeftSection = () => {
+const NewsFeedLeftSection = ({ queryKey = 'posts' }) => {
   const router = useRouter();
   const { page: currentPage = 1 } = router.query;
 
@@ -17,7 +17,7 @@ const NewsFeedLeftSection = () => {
     setPage(currentPage);
   }, [currentPage]);
 
-  const { isLoading, error, data } = useQuery(["posts", { page }], {
+  const { isLoading, error, data } = useQuery([`${queryKey}`, { page }], {
     staleTime: 5 * 60 * 1000,
     keepPreviousData: false,
   });

@@ -8,6 +8,8 @@ import Layout from "../Components/Layout";
 import WithLayout from "../Components/WithLayout";
 
 const Index = () => {
+  const queryKey = `posts`;
+
   return (
     <>
       {/* <FeaturedSection /> */}
@@ -15,7 +17,7 @@ const Index = () => {
       {/* <CategoriesFeedSection /> */}
       {/* <HorizontalFeedSection /> */}
 
-      <NewsFeedSection />
+      <NewsFeedSection queryKey={queryKey} />
       {/* <AdsSection /> */}
     </>
   );

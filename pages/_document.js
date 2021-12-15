@@ -21,7 +21,7 @@ class Document extends NextDocument {
             content="nJt6gwBgHkE7LfyPHtHzwrjsKftGQS31wRwFoFWFSIU"
           />
           <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-title" content="IDPELAGO" />
+          <meta name="apple-mobile-web-app-title" content="Zurnal.co" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
             content="black-translucent"
@@ -33,7 +33,7 @@ class Document extends NextDocument {
           <meta name="theme-color" content="#ffffff" />
           <meta
             name="Copyright"
-            content={`@${year} IDPELAGO All Rights Reserved.`}
+            content={`@${year} Zurnal.co All Rights Reserved.`}
           />
           <meta property="fb:app_id" content="1016516678465561" />
           <meta property="og:image:type" content="image/jpg" />
