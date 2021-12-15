@@ -1,9 +1,11 @@
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 
 import Pagination from "@material-ui/lab/Pagination";
+
+import PostList from "../../../Components/PostList";
+import PostListSkeleton from "../../../Components/PostListSkeleton";
 
 const NewsFeedLeftSection = () => {
   const router = useRouter();
@@ -13,49 +15,21 @@ const NewsFeedLeftSection = () => {
 
   const { isLoading, error, data } = useQuery(["posts", { page }], {
     staleTime: 5 * 60 * 1000,
-    keepPreviousData: true,
+    keepPreviousData: false,
   });
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <PostListSkeleton />;
 
   if (error) return "An error has occurred: " + error.message;
 
   const { items } = data;
   const { data: posts } = items;
 
-  const PostLink = ({ elem, children }) => {
-    return (
-      <Link
-        href={{
-          pathname: `/post/${elem.post_slug_id}/${elem.post_slug_title}`,
-        }}
-        as={`/post/${elem.post_slug_id}/${elem.post_slug_title}`}
-        shallow
-        passHref
-      >
-        {children}
-      </Link>
-    );
-  };
-
-  const UserLink = ({ elem, children }) => {
-    return (
-      <Link
-        href={{
-          pathname: `/user/${elem.username}`,
-        }}
-        as={`/user/${elem.username}`}
-        shallow
-        passHref
-      >
-        {children}
-      </Link>
-    );
-  };
-
   const handlePaginationChange = (e, value) => {
     setPage(value);
-    router.push(`?page=${value}`, undefined, { scroll: true });
+    router.push(`?page=${value}`, undefined, {
+      scroll: true,
+    });
   };
 
   return (
@@ -71,46 +45,7 @@ const NewsFeedLeftSection = () => {
           <div className="item">
             {posts &&
               posts.map((post, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="utf_post_block_style utf_post_float_half clearfix"
-                  >
-                    <div className="utf_post_thumb">
-                      <PostLink elem={post}>
-                        <img
-                          className="img-fluid"
-                          src={post.featured_image}
-                          alt=""
-                        />
-                      </PostLink>
-                    </div>
-
-                    <a className="utf_post_cat" href="#">
-                      {post.category.name}
-                    </a>
-
-                    <div className="utf_post_content">
-                      <h2 className="utf_post_title">
-                        <PostLink elem={post}>{post.title}</PostLink>
-                      </h2>
-
-                      <div className="utf_post_meta">
-                        <span className="utf_post_author">
-                          <i className="fa fa-user"></i>{" "}
-                          <UserLink elem={post.user}>
-                            {post.user.display_name}
-                          </UserLink>
-                        </span>
-                        <span className="utf_post_date">
-                          <i className="fa fa-clock-o"></i> {post.published_at}
-                        </span>
-                      </div>
-
-                      <p>{post.excerpt}</p>
-                    </div>
-                  </div>
-                );
+                return <PostList elem={post} index={index} />;
               })}
           </div>
         </div>
