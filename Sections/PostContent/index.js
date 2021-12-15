@@ -1,16 +1,34 @@
+import { useEffect } from "react";
 import { useQuery } from "react-query";
+import Pagination from "@material-ui/lab/Pagination";
 
 import PostContentSkeleton from "../../Components/PostContentSkeleton";
 
 const PostContentSection = ({ postSlugId, postSlugTitle }) => {
+  const router = useRouter();
+  const { page: currentPage = 1 } = router.query;
+
+  const [page, setPage] = useState(currentPage);
+
+  useEffect(() => {
+    setPage(currentPage);
+  }, [currentPage]);
+
   const { isLoading, data } = useQuery(
-    [`post/${postSlugId}/${postSlugTitle}`],
+    [`post/${postSlugId}/${postSlugTitle}`, [page]],
     { staleTime: 5 * 60 * 1000 }
   );
 
   if (isLoading) return <PostContentSkeleton />;
 
   const { items: post } = data;
+
+  const handlePaginationChange = (e, value) => {
+    setPage(value);
+    router.push(`?page=${value}`, undefined, {
+      scroll: true,
+    });
+  };
 
   return (
     <div className="col-lg-8 col-md-12">
@@ -47,6 +65,15 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
               __html: post.content.replace(/(<? *script)/gi, "illegalscript"),
             }}
           ></div>
+
+          <Pagination
+            count={post.post_paginate_total}
+            variant="outlined"
+            color="primary"
+            className="paging"
+            page={post.post_paginate_current}
+            onChange={handlePaginationChange}
+          />
 
           <div className="tags-area clearfix">
             <div className="post-tags">
