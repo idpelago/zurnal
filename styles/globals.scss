@@ -8038,48 +8038,6 @@ span.post-comment span {
 	-o-transition: all .3s ease-out;
 	transition: all .3s ease-out;
 }
-.utf_post_block_style:hover .utf_post_thumb img, .utf_post_overaly_style:hover .utf_post_thumb img {
-	-webkit-transform: scale(1.15);
-	-moz-transform: scale(1.15);
-	-ms-transform: scale(1.15);
-	-o-transform: scale(1.15);
-	transform: scale(1.15);
-	-webkit-transform: scale(1.2) rotate(5deg);
-    transform: scale(1.2) rotate(5deg);
-    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=30)";
-    filter: alpha(opacity=30);
-	-webkit-transition: all .5s ease-out;
-	-o-transition: all .5s ease-out;
-	transition: all .5s ease-out;
-}
-.utf_post_block_style:hover .utf_post_thumb img {
-	-webkit-transform: scale(1.15);
-	-moz-transform: scale(1.15);
-	-ms-transform: scale(1.15);
-	-o-transform: scale(1.15);
-	transform: scale(1.15);
-	-webkit-transform: scale(1.2) rotate(5deg);
-    transform: scale(1.2) rotate(5deg);
-    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=30)";
-    filter: alpha(opacity=30);
-	-webkit-transition: all .5s ease-out;
-	-o-transition: all .5s ease-out;
-	transition: all .5s ease-out;
-}
-.utf_post_block_style:hover .utf_post_thumb:before {
-	content:"";
-	background:rgba(0, 0, 0, 0.5);
-	z-index:1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: 0.3s background ease-out;
-	-webkit-transition: all .5s ease-out;
-	-o-transition: all .5s ease-out;
-	transition: all .5s ease-out;
-}
 .thumb-float-style .utf_post_cat {
 	position: absolute;
 	top: 20px;
