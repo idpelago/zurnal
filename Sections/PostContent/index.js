@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useQuery } from "react-query";
+import { useRouter } from "next/router";
 import Pagination from "@material-ui/lab/Pagination";
 
 import PostContentSkeleton from "../../Components/PostContentSkeleton";
