@@ -1,5 +1,7 @@
 import Script from "next/script";
 import dynamic from "next/dynamic";
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
 
@@ -29,8 +31,21 @@ const getQueryClientConfig = (req) => ({
 const queryClient = new QueryClient(getQueryClientConfig());
 
 const App = ({ Component, pageProps }) => {
+  const router = useRouter();
   const children = <Component {...pageProps} />;
   const withLayout = Component.getLayout ?.(children) ?.(pageProps) ?? children;
+
+  useEffect(() => {
+    const handleChange = () => window.scrollTo(0, 0)
+
+    router.events.on('routeChangeComplete', handleChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off('routeChangeComplete', handleChange)
+    }
+  }, [])
 
   return (
     <>

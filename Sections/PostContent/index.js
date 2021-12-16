@@ -6,7 +6,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import MetaHeader from "../../Components/MetaHeader";
 import PostContentSkeleton from "../../Components/PostContentSkeleton";
 
-import { CategoryLink, TagLink, UserLink } from '../../utils/link-generator';
+import { CategoryLink, PostLink, TagLink, UserLink } from '../../utils/link-generator';
 
 const PostContentSection = ({ postSlugId, postSlugTitle }) => {
   const router = useRouter();
@@ -134,22 +134,33 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
         </div>
 
         <nav className="post-navigation clearfix">
-          <div className="post-previous">
-            <a href="#">
-              <span>
-                <i className="fa fa-angle-left"></i>Previous Post
-              </span>
-              <h3>Zhang social media pop also known when smart innocent...</h3>
-            </a>
-          </div>
-          <div className="post-next">
-            <a href="#">
-              <span>
-                Next Post <i className="fa fa-angle-right"></i>
-              </span>
-              <h3>Zhang social media pop also known when smart innocent...</h3>
-            </a>
-          </div>
+          <>
+            <div className="post-previous">
+              {post.previous_post &&
+                <PostLink elem={post.previous_post}>
+                  <a>
+                    <span>
+                      <i className="fa fa-angle-left"></i>Previous Post
+                    </span>
+                    <h3>{post.previous_post.title}</h3>
+                  </a>
+                </PostLink>
+              }
+            </div>
+
+            <div className="post-next">
+              {post.next_post &&
+                <PostLink elem={post.next_post}>
+                  <a>
+                    <span>
+                      Next Post <i className="fa fa-angle-right"></i>
+                    </span>
+                    <h3>{post.next_post.title}</h3>
+                  </a>
+                </PostLink>
+              }
+            </div>
+          </>
         </nav>
       </div>
     </>

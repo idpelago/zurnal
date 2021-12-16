@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const MainNavSection = () => {
   return (
-    <div className="utf_main_nav_area clearfix utf_sticky">
+    <div className="utf_main_nav_area dark-bg clearfix utf_sticky">
       <div className="container">
         <div className="row">
           <nav className="navbar navbar-expand-lg col">
@@ -32,6 +32,13 @@ const MainNavSection = () => {
               </div>
             </div>
           </nav>
+
+          <div className="logo mobile-logo">
+            <Link href={{ pathname: `/` }} >
+              <a><h1>Zurnal.co</h1></a>
+            </Link>
+          </div>
+
           <div className="utf_nav_search">
             <span id="search">
               <i className="fa fa-search"></i>
