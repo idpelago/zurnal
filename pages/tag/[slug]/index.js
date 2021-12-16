@@ -6,7 +6,10 @@ import Layout from "../../../Components/Layout";
 import WithLayout from "../../../Components/WithLayout";
 import MetaHeader from "../../../Components/MetaHeader";
 
-const Tag = () => {
+import { getTag } from "../../../apis";
+import { detectRobot } from "../../../utils/helpers";
+
+const Tag = (props) => {
     const router = useRouter();
     const { slug } = router.query;
 
@@ -20,7 +23,10 @@ const Tag = () => {
                 type="tag"
             />
 
-            <NewsFeedSection pageType={`# ${slug}`} queryKey={queryKey} />
+            <NewsFeedSection
+                pageType={`# ${slug}`}
+                queryKey={queryKey}
+                {...props} />
         </>
     );
 }
@@ -28,3 +34,24 @@ const Tag = () => {
 export default WithLayout((children) => (props) => (
     <Layout {...props}>{children}</Layout>
 ))(Tag);
+
+export const getServerSideProps = async ({ req, query }) => {
+    const response = {
+        props: {},
+    };
+
+    const userAgent = req.headers["user-agent"];
+    const isRobot = detectRobot(userAgent);
+
+    if (!isRobot) return response;
+
+    const { slug, page = 1 } = query;
+    const ssrData = await getTag({ slug, page });
+
+    response.props = {
+        ssrData,
+        isRobot,
+    };
+
+    return response;
+};

@@ -8,7 +8,7 @@ import PostContentSkeleton from "../../Components/PostContentSkeleton";
 
 import { CategoryLink, PostLink, TagLink, UserLink } from '../../utils/link-generator';
 
-const PostContentSection = ({ postSlugId, postSlugTitle }) => {
+const PostContentSection = ({ ssrData, isRobot = false, postSlugId, postSlugTitle }) => {
   const router = useRouter();
   const { page: currentPage = 1 } = router.query;
 
@@ -18,14 +18,22 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
     setPage(currentPage);
   });
 
-  const { isLoading, data } = useQuery(
-    [`post/${postSlugId}/${postSlugTitle}`, { page }],
-    { staleTime: 5 * 60 * 1000 }
-  );
+  let dataItems;
 
-  if (isLoading) return <PostContentSkeleton />;
+  if (!isRobot) {
+    const { isLoading, data } = useQuery(
+      [`post/${postSlugId}/${postSlugTitle}`, { page }],
+      { staleTime: 5 * 60 * 1000 }
+    );
 
-  const { items: post } = data;
+    if (isLoading) return <PostContentSkeleton />;
+
+    dataItems = data;
+  } else {
+    dataItems = ssrData;
+  }
+
+  const { items: post } = dataItems;
 
   const handlePaginationChange = (e, value) => {
     setPage(value);

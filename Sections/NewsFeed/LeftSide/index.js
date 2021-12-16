@@ -7,7 +7,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import PostList from "../../../Components/PostList";
 import PostListSkeleton from "../../../Components/PostListSkeleton";
 
-const NewsFeedLeftSection = ({ queryKey = 'posts', pageType = 'index' }) => {
+const NewsFeedLeftSection = ({ isRobot, ssrData, queryKey = 'posts', pageType = 'index' }) => {
   const router = useRouter();
   const { page: currentPage = 1 } = router.query;
 
@@ -17,16 +17,21 @@ const NewsFeedLeftSection = ({ queryKey = 'posts', pageType = 'index' }) => {
     setPage(currentPage);
   }, [currentPage]);
 
-  const { isLoading, error, data } = useQuery([`${queryKey}`, { page }], {
-    staleTime: 5 * 60 * 1000,
-    keepPreviousData: false,
-  });
+  let dataItems;
 
-  if (isLoading) return <PostListSkeleton />;
+  if (!isRobot) {
+    const { isLoading, data } = useQuery([`${queryKey}`, { page }], {
+      staleTime: 5 * 60 * 1000,
+      keepPreviousData: false,
+    });
 
-  if (error) return "An error has occurred: " + error.message;
+    if (isLoading) return <PostListSkeleton />;
+    dataItems = data;
+  } else {
+    dataItems = ssrData;
+  }
 
-  const { items } = data;
+  const { items } = dataItems;
 
   if (!items) return (
     <div className="col-lg-8 col-md-12">
