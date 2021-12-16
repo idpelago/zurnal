@@ -9822,6 +9822,12 @@ ul.nav li.dropdown .utf_dropdown_menu li.utf_dropdown_submenu:hover .utf_dropdow
 	font-size: 22px;
 	line-height: 30px;
 }
+.entry-content img {
+	max-width: 400px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+}
 .tags-area {
 	margin: 20px 0;
 }
@@ -10546,6 +10552,12 @@ nav.navbar .utf_site_nav_inner ul.navbar-nav li.dropdown ul.utf_dropdown_menu::a
 }
 
 @media (max-width: 767px) {
+.entry-content img {
+	max-width: 300px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+}
 #utf_more_news_slide {
 	.utf_post_block_style {
 		display: flex;
