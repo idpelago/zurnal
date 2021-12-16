@@ -13,9 +13,9 @@ const PostList = ({ elem }) => {
 
   return (
     <div className="utf_post_block_style utf_post_float_half clearfix">
-      <div className="utf_post_thumb" ref={imgRef}>
-        <PostLink elem={elem}>
-          <>
+      <PostLink elem={elem}>
+        <a>
+          <div className="utf_post_thumb" ref={imgRef}>
             {isInView && (
               <img className="img-fluid"
                 onError={(e) => ImgError(e)}
@@ -23,9 +23,9 @@ const PostList = ({ elem }) => {
                 alt={elem.title}
               />
             )}
-          </>
-        </PostLink>
-      </div>
+          </div>
+        </a>
+      </PostLink>
 
       <CategoryLink elem={elem}>
         <a className="utf_post_cat">{elem.category.name}</a>
