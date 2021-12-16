@@ -16,7 +16,7 @@ const PostContentSection = ({ postSlugId, postSlugTitle }) => {
 
   useEffect(() => {
     setPage(currentPage);
-  }, [page]);
+  });
 
   const { isLoading, data } = useQuery(
     [`post/${postSlugId}/${postSlugTitle}`, { page }],
