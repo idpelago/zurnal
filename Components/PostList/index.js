@@ -1,11 +1,29 @@
+import { useEffect, useState, useRef } from "react";
+
+import { ImgError } from "../../utils/helpers";
 import { CategoryLink, PostLink, UserLink } from "../../utils/link-generator";
 
+import { useIntersection } from "../../hooks/use-intersection";
+
 const PostList = ({ elem }) => {
+  const imgRef = useRef();
+  const [isInView, setIsInView] = useState(false);
+
+  useIntersection(imgRef, () => setIsInView(true));
+
   return (
     <div className="utf_post_block_style utf_post_float_half clearfix">
-      <div className="utf_post_thumb">
+      <div className="utf_post_thumb" ref={imgRef}>
         <PostLink elem={elem}>
-          <img className="img-fluid" src={elem.featured_image} alt={elem.title} />
+          <>
+            {isInView && (
+              <img className="img-fluid"
+                onError={(e) => ImgError(e)}
+                src={elem.featured_image}
+                alt={elem.title}
+              />
+            )}
+          </>
         </PostLink>
       </div>
 
