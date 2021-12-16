@@ -10562,6 +10562,11 @@ nav.navbar .utf_site_nav_inner ul.navbar-nav li.dropdown ul.utf_dropdown_menu::a
 	display: none;
 }
 @media (max-width: 767px) {
+.post-featured-image {
+	min-height: 216px;
+	background-color: #ecebeb;
+	border-radius: 5px;
+}
 .utf_search_block {
 	right: 2px;
 	margin-top: 0px;
