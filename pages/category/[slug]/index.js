@@ -15,6 +15,12 @@ const Category = (props) => {
 
   const queryKey = `category/${slug}`;
 
+  const params = {
+    pageType: slug,
+    queryKey,
+    ...props,
+  };
+
   return (
     <>
       <MetaHeader
@@ -23,7 +29,7 @@ const Category = (props) => {
         type="category"
       />
 
-      <NewsFeedSection pageType={`${slug}`} queryKey={queryKey} {...props} />
+      <NewsFeedSection {...params} />
     </>
   );
 };

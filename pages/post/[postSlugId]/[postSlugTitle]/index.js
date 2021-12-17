@@ -12,17 +12,17 @@ import { processSSR } from "../../../../utils/helpers";
 const PostContent = (props) => {
   const router = useRouter();
   const { postSlugId, postSlugTitle } = router.query;
+  const params = {
+    postSlugId,
+    postSlugTitle,
+    ...props,
+  };
 
   return (
     <section className="utf_block_wrapper">
       <div className="container">
         <div className="row">
-          <PostContentSection
-            {...props}
-            postSlugId={postSlugId}
-            postSlugTitle={postSlugTitle}
-          />
-
+          <PostContentSection {...params} />
           <NewsFeedRightSection />
         </div>
       </div>

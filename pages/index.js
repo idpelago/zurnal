@@ -13,17 +13,18 @@ import { processSSR } from "../utils/helpers";
 
 const Index = (props) => {
   const queryKey = `posts`;
+  const params = { queryKey, ...props };
 
   return (
     <>
       <MetaHeader type="index" />
 
       {/* <FeaturedSection /> */}
-
       {/* <CategoriesFeedSection /> */}
       {/* <HorizontalFeedSection /> */}
 
-      <NewsFeedSection queryKey={queryKey} {...props} />
+      <NewsFeedSection {...params} />
+
       {/* <AdsSection /> */}
     </>
   );

@@ -14,6 +14,11 @@ const User = (props) => {
   const { username } = router.query;
 
   const queryKey = `user/${username}`;
+  const params = {
+    pageType: `${username}'s`,
+    queryKey,
+    ...props,
+  };
 
   return (
     <>
@@ -23,11 +28,7 @@ const User = (props) => {
         type="user"
       />
 
-      <NewsFeedSection
-        pageType={`${username}'s`}
-        queryKey={queryKey}
-        {...props}
-      />
+      <NewsFeedSection {...params} />
     </>
   );
 };

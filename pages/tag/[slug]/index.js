@@ -14,6 +14,11 @@ const Tag = (props) => {
   const { slug } = router.query;
 
   const queryKey = `tag/${slug}`;
+  const params = {
+    pageType: `# ${slug}`,
+    queryKey,
+    ...props,
+  };
 
   return (
     <>
@@ -23,7 +28,7 @@ const Tag = (props) => {
         type="tag"
       />
 
-      <NewsFeedSection pageType={`# ${slug}`} queryKey={queryKey} {...props} />
+      <NewsFeedSection {...params} />
     </>
   );
 };
