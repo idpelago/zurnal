@@ -159,7 +159,7 @@ const PostContentSection = ({
                 <PostLink elem={post.previous_post}>
                   <a>
                     <span>
-                      <i className="fa fa-angle-left"></i>Previous Post
+                      <i className="fa fa-angle-left"></i> Previous Post
                     </span>
                     <h3>{post.previous_post.title}</h3>
                   </a>
