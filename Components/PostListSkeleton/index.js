@@ -8,9 +8,7 @@ const PostListSkeleton = () => {
   const [mode, setMode] = useState("mobile");
 
   useEffect(() => {
-    const width = window.innerWidth;
-
-    setMode(width < minWidth ? "mobile" : "desktop");
+    setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
   });
 
   const DesktopSkeleton = () => {
