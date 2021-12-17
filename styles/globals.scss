@@ -12334,8 +12334,10 @@ label {
     min-height: 70px;
   }
 }
-.redirecting {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+@media (max-width: 768px) {
+    .redirecting {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
 }

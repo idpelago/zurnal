@@ -45,7 +45,11 @@ const PostContentSection = ({
 
   if (!dataItems) {
     router.push("/");
-    return <div className="redirecting">Redirecting ....</div>;
+    return (
+      <div className="col-lg-8 col-md-12">
+        <div className="redirecting">Redirecting ....</div>
+      </div>
+    );
   }
 
   const { items: post } = dataItems;
