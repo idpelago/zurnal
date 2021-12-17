@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 
 import { ImgError } from "../../utils/helpers";
 import { CategoryLink, PostLink, UserLink } from "../../utils/link-generator";

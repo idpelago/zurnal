@@ -42,3 +42,23 @@ export const detectRobot = (userAgent) => {
 
   return robots.test(userAgent);
 };
+
+export const processSSR = async (userAgent, modelQuery, parameters) => {
+  const response = {
+    props: {},
+  };
+
+  //   const isRobot = true;
+  const isRobot = detectRobot(userAgent);
+
+  if (!isRobot) return response;
+
+  const ssrData = await modelQuery(parameters);
+
+  response.props = {
+    ssrData,
+    isRobot,
+  };
+
+  return response;
+};

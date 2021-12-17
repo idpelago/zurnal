@@ -60,7 +60,7 @@ const NewsFeedLeftSection = ({
     return (
       <>
         {pageType != "index" ? (
-          <h3 class="utf_block_title">
+          <h3 className="utf_block_title">
             <span>{pageType} News</span>
           </h3>
         ) : null}

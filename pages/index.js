@@ -9,7 +9,7 @@ import WithLayout from "../Components/WithLayout";
 import MetaHeader from "../Components/MetaHeader";
 
 import { getPosts } from "../apis";
-import { detectRobot } from "../utils/helpers";
+import { processSSR } from "../utils/helpers";
 
 const Index = (props) => {
   const queryKey = `posts`;
@@ -34,22 +34,11 @@ export default WithLayout((children) => (props) => (
 ))(Index);
 
 export const getServerSideProps = async ({ req, query }) => {
-  const response = {
-    props: {},
-  };
-
-  const userAgent = req.headers["user-agent"];
-  const isRobot = detectRobot(userAgent);
-
-  if (!isRobot) return response;
+  let userAgent = req.headers["user-agent"];
 
   const { page = 1 } = query;
-  const ssrData = await getPosts({ page });
 
-  response.props = {
-    ssrData,
-    isRobot,
-  };
+  const parameters = { page };
 
-  return response;
+  return processSSR(userAgent, getPosts, parameters);
 };

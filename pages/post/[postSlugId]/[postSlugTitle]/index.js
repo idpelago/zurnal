@@ -7,7 +7,7 @@ import PostContentSection from "../../../../Sections/PostContent";
 import NewsFeedRightSection from "../../../../Sections/NewsFeed/RightSide";
 
 import { getPost } from "../../../../apis";
-import { detectRobot } from "../../../../utils/helpers";
+import { processSSR } from "../../../../utils/helpers";
 
 const PostContent = (props) => {
   const router = useRouter();
@@ -35,22 +35,14 @@ export default WithLayout((children) => (props) => (
 ))(PostContent);
 
 export const getServerSideProps = async ({ req, query }) => {
-  const response = {
-    props: {},
-  };
-
-  const userAgent = req.headers["user-agent"];
-  const isRobot = detectRobot(userAgent);
-
-  if (!isRobot) return response;
+  let userAgent = req.headers["user-agent"];
 
   const { postSlugId, postSlugTitle, page = 1 } = query;
-  const ssrData = await getPost({ postSlugId, postSlugTitle, page });
-
-  response.props = {
-    ssrData,
-    isRobot,
+  const parameters = {
+    postSlugId,
+    postSlugTitle,
+    page,
   };
 
-  return response;
+  return processSSR(userAgent, getPost, parameters);
 };

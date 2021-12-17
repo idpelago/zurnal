@@ -7,7 +7,7 @@ import WithLayout from "../../../Components/WithLayout";
 import MetaHeader from "../../../Components/MetaHeader";
 
 import { getCategory } from "../../../apis";
-import { detectRobot } from "../../../utils/helpers";
+import { processSSR } from "../../../utils/helpers";
 
 const Category = (props) => {
   const router = useRouter();
@@ -33,22 +33,11 @@ export default WithLayout((children) => (props) => (
 ))(Category);
 
 export const getServerSideProps = async ({ req, query }) => {
-  const response = {
-    props: {},
-  };
-
-  const userAgent = req.headers["user-agent"];
-  const isRobot = detectRobot(userAgent);
-
-  if (!isRobot) return response;
+  let userAgent = req.headers["user-agent"];
 
   const { slug, page = 1 } = query;
-  const ssrData = await getCategory({ slug, page });
 
-  response.props = {
-    ssrData,
-    isRobot,
-  };
+  const parameters = { slug, page };
 
-  return response;
+  return processSSR(userAgent, getCategory, parameters);
 };
