@@ -15,7 +15,7 @@ import {
 
 const PostContentSection = ({
   ssrData,
-  isRobot = false,
+  isRobot,
   postSlugId,
   postSlugTitle,
 }) => {

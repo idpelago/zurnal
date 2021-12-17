@@ -35,9 +35,7 @@ const App = ({ Component, pageProps }) => {
   const withLayout = Component.getLayout?.(children)?.(pageProps) ?? children;
 
   useEffect(() => {
-    const handleChange = () => {
-      setTimeOut(() => window.scrollTo(0, 0), 1000);
-    };
+    const handleChange = () => window.scrollTo(0, 0);
 
     router.events.on("routeChangeComplete", handleChange);
 
