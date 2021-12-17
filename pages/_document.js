@@ -109,7 +109,6 @@ class Document extends NextDocument {
             sizes="16x16"
             href="https://www.zurnal.co/images/favicon-16x16.png"
           />
-          <link rel="manifest" href="/manifest.json" />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta
             name="msapplication-TileImage"
