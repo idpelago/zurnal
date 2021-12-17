@@ -45,12 +45,6 @@ const App = ({ Component, pageProps }) => {
     const handleChange = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
     router.events.on("routeChangeComplete", handleChange);
-
-    // If the component is unmounted, unsubscribe
-    // from the event with the `off` method:
-    return () => {
-      router.events.off("routeChangeComplete", handleChange);
-    };
   }, []);
 
   return (
