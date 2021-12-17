@@ -43,6 +43,11 @@ const PostContentSection = ({
     dataItems = ssrData;
   }
 
+  if (!dataItems) {
+    router.push("/");
+    return <div className="redirecting">Redirecting ....</div>;
+  }
+
   const { items: post } = dataItems;
 
   const handlePaginationChange = (e, value) => {
