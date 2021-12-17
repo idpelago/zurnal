@@ -99,8 +99,9 @@ const PostContentSection = ({
             ></div>
 
             {post.post_paginate_total > 1 ? (
-              <h2>Halaman Berikutnya :</h2>
+              <h4>Halaman Berikutnya :</h4>
             ) : null}
+
             <Pagination
               count={post.post_paginate_total}
               variant="outlined"
