@@ -13,7 +13,7 @@ import { detectRobot } from "../utils/helpers";
 
 const Index = (props) => {
   const queryKey = `posts`;
-  console.log('props: ', props)
+
   return (
     <>
       <MetaHeader type="index" />
