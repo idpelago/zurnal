@@ -1,15 +1,11 @@
 import ContentLoader from "react-content-loader";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 
-import config from "../../utils/config";
+import AppContext from "../../context/AppContext";
 
 const PostListSkeleton = () => {
-  const { minWidth } = config;
-  const [mode, setMode] = useState("mobile");
-
-  useEffect(() => {
-    setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
-  });
+  const value = useContext(AppContext);
+  const mode = value.state.mode;
 
   const DesktopSkeleton = () => {
     return (

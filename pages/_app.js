@@ -1,11 +1,13 @@
 import Script from "next/script";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
 
+import AppContext from "../context/AppContext";
 import queryFn from "../utils/query-fn";
+import config from "../utils/config";
 
 import "nprogress/nprogress.css";
 import "../styles/globals.scss";
@@ -34,7 +36,12 @@ const App = ({ Component, pageProps }) => {
   const children = <Component {...pageProps} />;
   const withLayout = Component.getLayout?.(children)?.(pageProps) ?? children;
 
+  const { minWidth } = config;
+  const [mode, setMode] = useState();
+
   useEffect(() => {
+    setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
+
     const handleChange = () => window.scrollTo(0, 0);
 
     router.events.on("routeChangeComplete", handleChange);
@@ -60,10 +67,17 @@ const App = ({ Component, pageProps }) => {
 
       <TopProgressBar />
 
-      <QueryClientProvider client={queryClient}>
-        {withLayout}
-        <ReactQueryDevtools position="bottom-right" />
-      </QueryClientProvider>
+      <AppContext.Provider
+        value={{
+          state: { mode },
+          setMode: mode,
+        }}
+      >
+        <QueryClientProvider client={queryClient}>
+          {withLayout}
+          <ReactQueryDevtools position="bottom-right" />
+        </QueryClientProvider>
+      </AppContext.Provider>
     </>
   );
 };
