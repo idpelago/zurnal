@@ -4,13 +4,11 @@ import { useEffect, useState } from "react";
 import config from "../../utils/config";
 
 const PostListSkeleton = () => {
-  let width;
-
   const { minWidth } = config;
-  const [mode, setMode] = useState("desktop");
+  const [mode, setMode] = useState("mobile");
 
   useEffect(() => {
-    width = window.innerWidth;
+    const width = window.innerWidth;
 
     setMode(width < minWidth ? "mobile" : "desktop");
   });
