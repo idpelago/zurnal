@@ -23,19 +23,20 @@ function MetaHeader({ title = null, description = null, type = null }) {
       normalizedUrl = `${siteUrl}/post/${title}`;
       break;
 
-
     default:
       normalizedUrl = `${siteUrl}/`;
       break;
   }
 
-  const normalizedTitle = (title !== null)
-    ? `${title} | Zurnal`
-    : "Zurnal | Entertain, Inspire & Educate";
+  const normalizedTitle =
+    title !== null
+      ? `${title} | Zurnal`
+      : "Zurnal | Entertain, Inspire & Educate";
 
-  const normalizedDescription = (description !== null)
-    ? `View all posts from ${description} category on Zurnal.co`
-    : "Entertain, Inspire & Educate";
+  const normalizedDescription =
+    description !== null
+      ? `View all posts from ${description} category on Zurnal.co`
+      : "Entertain, Inspire & Educate";
 
   return (
     <Head>

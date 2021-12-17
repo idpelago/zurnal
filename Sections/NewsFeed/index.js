@@ -10,7 +10,8 @@ const NewsFeedSection = ({ isRobot, ssrData, pageType, queryKey }) => {
             pageType={pageType}
             queryKey={queryKey}
             isRobot={isRobot}
-            ssrData={ssrData} />
+            ssrData={ssrData}
+          />
 
           <NewsFeedRightSection />
         </div>

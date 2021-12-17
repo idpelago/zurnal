@@ -17,7 +17,8 @@ const PostList = ({ elem }) => {
         <a>
           <div className="utf_post_thumb" ref={imgRef}>
             {isInView && (
-              <img className="img-fluid"
+              <img
+                className="img-fluid"
                 onError={(e) => ImgError(e)}
                 src={elem.featured_image}
                 alt={elem.title}

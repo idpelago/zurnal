@@ -1,11 +1,11 @@
 import { api } from "./api";
 
 export const getTag = async ({ slug, page = null }) => {
-    let tagQuery = {};
+  let tagQuery = {};
 
-    if (page !== null) tagQuery.page = page;
+  if (page !== null) tagQuery.page = page;
 
-    return await api(`GET`, `tag/${slug}`, {
-        query: tagQuery,
-    });
+  return await api(`GET`, `tag/${slug}`, {
+    query: tagQuery,
+  });
 };

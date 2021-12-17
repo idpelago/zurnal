@@ -34,8 +34,10 @@ const MainNavSection = () => {
           </nav>
 
           <div className="logo mobile-logo">
-            <Link href={{ pathname: `/` }} >
-              <a><h1>Zurnal.co</h1></a>
+            <Link href={{ pathname: `/` }}>
+              <a>
+                <h1>Zurnal.co</h1>
+              </a>
             </Link>
           </div>
 

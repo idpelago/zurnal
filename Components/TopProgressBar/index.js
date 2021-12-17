@@ -8,25 +8,25 @@ let activeRequests = 0;
 const delay = 250;
 
 function load() {
-    if (state === "loading") {
-        return;
-    }
+  if (state === "loading") {
+    return;
+  }
 
-    state = "loading";
+  state = "loading";
 
-    timer = setTimeout(() => NProgress.start(), delay);
+  timer = setTimeout(() => NProgress.start(), delay);
 }
 
 function stop() {
-    if (activeRequests > 0) {
-        return;
-    }
+  if (activeRequests > 0) {
+    return;
+  }
 
-    state = "stop";
+  state = "stop";
 
-    clearTimeout(timer);
+  clearTimeout(timer);
 
-    NProgress.done();
+  NProgress.done();
 }
 
 Router.events.on("routeChangeStart", load);
@@ -36,30 +36,27 @@ Router.events.on("routeChangeError", stop);
 const originalFetch = window.fetch;
 
 window.fetch = async function (...args) {
+  if (activeRequests === 0) {
+    load();
+  }
+
+  activeRequests++;
+
+  try {
+    const response = await originalFetch(...args);
+
+    return response;
+  } catch (error) {
+    return Promise.reject(error);
+  } finally {
+    activeRequests -= 1;
+
     if (activeRequests === 0) {
-        load();
+      stop();
     }
-
-    activeRequests++;
-
-    try {
-        const response = await originalFetch(...args);
-
-        return response;
-
-    } catch (error) {
-
-        return Promise.reject(error);
-
-    } finally {
-        activeRequests -= 1;
-
-        if (activeRequests === 0) {
-            stop();
-        }
-    }
+  }
 };
 
 export default function () {
-    return null;
+  return null;
 }

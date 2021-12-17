@@ -1,7 +1,7 @@
 import Script from "next/script";
 import dynamic from "next/dynamic";
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
 
@@ -10,10 +10,9 @@ import queryFn from "../utils/query-fn";
 import "nprogress/nprogress.css";
 import "../styles/globals.scss";
 
-const TopProgressBar = dynamic(
-  () => import("../Components/TopProgressBar"),
-  { ssr: false },
-);
+const TopProgressBar = dynamic(() => import("../Components/TopProgressBar"), {
+  ssr: false,
+});
 
 const getQueryClientConfig = (req) => ({
   defaultOptions: {
@@ -33,19 +32,19 @@ const queryClient = new QueryClient(getQueryClientConfig());
 const App = ({ Component, pageProps }) => {
   const router = useRouter();
   const children = <Component {...pageProps} />;
-  const withLayout = Component.getLayout ?.(children) ?.(pageProps) ?? children;
+  const withLayout = Component.getLayout?.(children)?.(pageProps) ?? children;
 
   useEffect(() => {
-    const handleChange = () => window.scrollTo(0, 0)
+    const handleChange = () => window.scrollTo(0, 0);
 
-    router.events.on('routeChangeComplete', handleChange)
+    router.events.on("routeChangeComplete", handleChange);
 
     // If the component is unmounted, unsubscribe
     // from the event with the `off` method:
     return () => {
-      router.events.off('routeChangeComplete', handleChange)
-    }
-  }, [])
+      router.events.off("routeChangeComplete", handleChange);
+    };
+  }, []);
 
   return (
     <>

@@ -6,9 +6,19 @@ import Pagination from "@material-ui/lab/Pagination";
 import MetaHeader from "../../Components/MetaHeader";
 import PostContentSkeleton from "../../Components/PostContentSkeleton";
 
-import { CategoryLink, PostLink, TagLink, UserLink } from '../../utils/link-generator';
+import {
+  CategoryLink,
+  PostLink,
+  TagLink,
+  UserLink,
+} from "../../utils/link-generator";
 
-const PostContentSection = ({ ssrData, isRobot = false, postSlugId, postSlugTitle }) => {
+const PostContentSection = ({
+  ssrData,
+  isRobot = false,
+  postSlugId,
+  postSlugTitle,
+}) => {
   const router = useRouter();
   const { page: currentPage = 1 } = router.query;
 
@@ -44,18 +54,14 @@ const PostContentSection = ({ ssrData, isRobot = false, postSlugId, postSlugTitl
         ...router.query,
         postSlugId: postSlugId,
         postSlugTitle: postSlugTitle,
-        page: value
-      }
+        page: value,
+      },
     });
   };
 
   return (
     <>
-      <MetaHeader
-        title={post.title}
-        description={post.excerpt}
-        type="post"
-      />
+      <MetaHeader title={post.title} description={post.excerpt} type="post" />
 
       <div className="col-lg-8 col-md-12">
         <div className="single-post">
@@ -67,7 +73,8 @@ const PostContentSection = ({ ssrData, isRobot = false, postSlugId, postSlugTitl
             <h2 className="utf_post_title">{post.title}</h2>
             <div className="utf_post_meta">
               <span className="utf_post_author">
-                By <UserLink elem={post.user}>{post.user.display_name}</UserLink>
+                By{" "}
+                <UserLink elem={post.user}>{post.user.display_name}</UserLink>
               </span>
               <span className="utf_post_date">
                 <i className="fa fa-clock-o"></i> {post.published_at}
@@ -91,7 +98,9 @@ const PostContentSection = ({ ssrData, isRobot = false, postSlugId, postSlugTitl
               }}
             ></div>
 
-            {post.post_paginate_total > 1 ? <h2>Halaman Berikutnya :</h2> : null}
+            {post.post_paginate_total > 1 ? (
+              <h2>Halaman Berikutnya :</h2>
+            ) : null}
             <Pagination
               count={post.post_paginate_total}
               variant="outlined"
@@ -105,7 +114,9 @@ const PostContentSection = ({ ssrData, isRobot = false, postSlugId, postSlugTitl
               <div className="post-tags">
                 <span>Tags:</span>
                 {post.tags.map((tag, index) => {
-                  return <TagLink key={index} elem={tag}>{`# ${tag.name}`}</TagLink>;
+                  return (
+                    <TagLink key={index} elem={tag}>{`# ${tag.name}`}</TagLink>
+                  );
                 })}
               </div>
             </div>
@@ -144,7 +155,7 @@ const PostContentSection = ({ ssrData, isRobot = false, postSlugId, postSlugTitl
         <nav className="post-navigation clearfix">
           <>
             <div className="post-previous">
-              {post.previous_post &&
+              {post.previous_post && (
                 <PostLink elem={post.previous_post}>
                   <a>
                     <span>
@@ -153,11 +164,11 @@ const PostContentSection = ({ ssrData, isRobot = false, postSlugId, postSlugTitl
                     <h3>{post.previous_post.title}</h3>
                   </a>
                 </PostLink>
-              }
+              )}
             </div>
 
             <div className="post-next">
-              {post.next_post &&
+              {post.next_post && (
                 <PostLink elem={post.next_post}>
                   <a>
                     <span>
@@ -166,7 +177,7 @@ const PostContentSection = ({ ssrData, isRobot = false, postSlugId, postSlugTitl
                     <h3>{post.next_post.title}</h3>
                   </a>
                 </PostLink>
-              }
+              )}
             </div>
           </>
         </nav>

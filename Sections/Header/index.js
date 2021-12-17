@@ -7,7 +7,7 @@ const HeaderSection = () => {
         <div className="row">
           <div className="col-md-12 col-sm-12 text-left">
             <div className="logo desktop-logo">
-              <Link href={{ pathname: `/` }} >
+              <Link href={{ pathname: `/` }}>
                 <h1>Zurnal.co</h1>
               </Link>
             </div>

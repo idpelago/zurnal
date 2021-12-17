@@ -7,7 +7,12 @@ import Pagination from "@material-ui/lab/Pagination";
 import PostList from "../../../Components/PostList";
 import PostListSkeleton from "../../../Components/PostListSkeleton";
 
-const NewsFeedLeftSection = ({ isRobot, ssrData, queryKey = 'posts', pageType = 'index' }) => {
+const NewsFeedLeftSection = ({
+  isRobot,
+  ssrData,
+  queryKey = "posts",
+  pageType = "index",
+}) => {
   const router = useRouter();
   const { page: currentPage = 1 } = router.query;
 
@@ -33,13 +38,14 @@ const NewsFeedLeftSection = ({ isRobot, ssrData, queryKey = 'posts', pageType = 
 
   const { items } = dataItems;
 
-  if (!items) return (
-    <div className="col-lg-8 col-md-12">
-      <div className="utf_more_news block color-default">
-        Something is wrong...
+  if (!items)
+    return (
+      <div className="col-lg-8 col-md-12">
+        <div className="utf_more_news block color-default">
+          Something is wrong...
+        </div>
       </div>
-    </div>
-  );
+    );
 
   const { data: posts } = items;
 
@@ -53,10 +59,14 @@ const NewsFeedLeftSection = ({ isRobot, ssrData, queryKey = 'posts', pageType = 
   const PageTypeSection = () => {
     return (
       <>
-        {(pageType != 'index') ? <h3 class="utf_block_title"><span>{pageType} News</span></h3> : null}
+        {pageType != "index" ? (
+          <h3 class="utf_block_title">
+            <span>{pageType} News</span>
+          </h3>
+        ) : null}
       </>
     );
-  }
+  };
 
   return (
     <div className="col-lg-8 col-md-12">
