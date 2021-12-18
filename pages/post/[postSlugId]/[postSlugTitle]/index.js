@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import Layout from "../../../../Components/Layout";
@@ -18,12 +19,40 @@ const PostContent = (props) => {
     ...props,
   };
 
+  useEffect(() => {
+    function loadAPI() {
+      var js = document.createElement("script");
+
+      js.src =
+        "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=396954390897339&version=v2.0";
+      document.body.appendChild(js);
+    }
+
+    window.onscroll = function () {
+      var rect = document.getElementById("comments").getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        loadAPI();
+        window.onscroll = null;
+      }
+    };
+  }, [postSlugId, postSlugTitle]);
+
   return (
     <section className="utf_block_wrapper">
       <div className="container">
         <div className="row">
           <PostContentSection {...params} />
           <NewsFeedRightSection />
+        </div>
+        <div className="row">
+          <div id="fb-root"></div>
+          <div
+            id="comments"
+            className="fb-comments"
+            data-href={`/post/${postSlugId}/${postSlugTitle}`}
+            data-numposts="5"
+            data-colorscheme="light"
+          ></div>
         </div>
       </div>
     </section>
