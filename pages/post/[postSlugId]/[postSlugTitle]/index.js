@@ -28,13 +28,7 @@ const PostContent = (props) => {
       document.body.appendChild(js);
     }
 
-    window.onscroll = function () {
-      var rect = document.getElementById("comments").getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        loadAPI();
-        window.onscroll = null;
-      }
-    };
+    setTimeout(() => loadAPI(), 1000);
   }, [postSlugId, postSlugTitle]);
 
   return (
@@ -44,15 +38,19 @@ const PostContent = (props) => {
           <PostContentSection {...params} />
           <NewsFeedRightSection />
         </div>
+
         <div className="row">
-          <div id="fb-root"></div>
-          <div
-            id="comments"
-            className="fb-comments"
-            data-href={`https://www.zurnal.co/post/${postSlugId}/${postSlugTitle}`}
-            data-numposts="5"
-            data-colorscheme="light"
-          ></div>
+          <div className="col-lg-8 col-md-12">
+            <div id="fb-root"></div>
+            <div
+              id="comments"
+              className="fb-comments"
+              data-href={`https://www.zurnal.co/post/${postSlugId}/${postSlugTitle}`}
+              data-colorscheme="light"
+              data-width="100%"
+              data-numposts="5"
+            ></div>
+          </div>
         </div>
       </div>
     </section>
