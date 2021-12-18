@@ -49,7 +49,7 @@ const PostContent = (props) => {
           <div
             id="comments"
             className="fb-comments"
-            data-href={`/post/${postSlugId}/${postSlugTitle}`}
+            data-href={`https://www.zurnal.co/post/${postSlugId}/${postSlugTitle}`}
             data-numposts="5"
             data-colorscheme="light"
           ></div>
