@@ -12343,7 +12343,9 @@ label {
 }
 
 img {
+  color: rgba(0, 0, 0, 0) !important;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
+  font-size: 0;
 }
