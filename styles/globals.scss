@@ -42,6 +42,7 @@
 ::after,
 ::before {
   box-sizing: border-box;
+  outline: none !important;
 }
 html {
   font-family: sans-serif;
@@ -11111,7 +11112,7 @@ ul.nav
 }
 .post-navigation {
   display: inline-block;
-  margin: 0 0 20px;
+  margin: 0px;
   width: 100%;
 }
 .single-post .post-featured-image img {
