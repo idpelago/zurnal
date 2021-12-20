@@ -1,4 +1,4 @@
-import { createSitemap } from "./helpers";
+import { createSitemap } from "../../helpers";
 
 export const getServerSideProps = ({ res }) => {
   const staticUrls = [`posts/sitemap.xml`];
