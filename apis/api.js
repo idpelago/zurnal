@@ -4,7 +4,7 @@ import { filterQuery } from "../utils/filter-query";
 
 const API_ENDPOINT = process.env.API_ENDPOINT;
 
-export async function api(method = "GET", path, { query }) {
+export async function api(method = "GET", path, { query } = {}) {
   let isAbsoluteURL = false;
 
   try {
