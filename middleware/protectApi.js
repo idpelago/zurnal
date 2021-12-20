@@ -3,16 +3,11 @@ const ENV_APP = process.env.ENV_APP;
 
 const protectApi = (handler) => {
   return async (req, res) => {
-    if (ENV_APP == "production") {
-      console.log(req.headers.referer);
-      console.log("===================");
-
-      if (
-        !req.headers.referer ||
-        new URL(req.headers.referer).origin !== SITE_URL
-      ) {
-        return res.status(403).json({ success: false, message: `Forbidden` });
-      }
+    if (
+      ENV_APP == "production" &&
+      (!req.headers.referer || new URL(req.headers.referer).origin !== SITE_URL)
+    ) {
+      return res.status(403).json({ success: false, message: `Forbidden` });
     }
 
     return handler(req, res);
