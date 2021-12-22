@@ -50,8 +50,16 @@ const NewsFeedLeftSection = ({
   const { data: posts } = items;
 
   const handlePaginationChange = (e, value) => {
-    setPage(value);
-    router.push(`?page=${value}`, undefined);
+    return new Promise((resolve) => resolve())
+      .then(() => {
+        router.push({
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            page: value,
+          },
+        });
+      })
   };
 
   const PageTypeSection = () => {
@@ -78,14 +86,16 @@ const NewsFeedLeftSection = ({
           </div>
         </div>
 
-        <Pagination
-          count={items.last_page}
-          variant="outlined"
-          color="primary"
-          className="paging"
-          page={items.current_page}
-          onChange={handlePaginationChange}
-        />
+        {items.last_page > 1 && (
+          <Pagination
+            count={items.last_page}
+            variant="outlined"
+            color="primary"
+            className="paging"
+            page={items.current_page}
+            onChange={handlePaginationChange}
+          />
+        )}
       </div>
     </div>
   );
