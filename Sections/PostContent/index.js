@@ -19,20 +19,19 @@ const PostContentSection = ({
 
   const [page, setPage] = useState(currentPage);
 
-  useEffect(() => setPage(currentPage));
+  useEffect(() => {
+    setPage(currentPage);
+  });
 
   let dataItems;
-  let contentLoading;
 
   if (!isRobot) {
     const { isLoading, data } = useQuery(
       [`post/${postSlugId}/${postSlugTitle}`, { page }],
-      { staleTime: 10000 }
+      { staleTime: 5 * 60 * 10000 }
     );
 
-    contentLoading = isLoading;
-
-    if (contentLoading) return <PostContentSkeleton />;
+    if (isLoading) return <PostContentSkeleton />;
 
     dataItems = data;
   } else {
@@ -51,8 +50,6 @@ const PostContentSection = ({
   const { items: post } = dataItems;
 
   const handlePaginationChange = (e, value) => {
-    contentLoading = true;
-
     setPage(value);
 
     router.push({
