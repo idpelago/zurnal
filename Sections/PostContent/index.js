@@ -108,17 +108,19 @@ const PostContentSection = ({
             ></div>
 
             {post.post_paginate_total > 1 ? (
-              <h4>Halaman Berikutnya :</h4>
-            ) : null}
+              <>
+                <h4>Halaman Berikutnya :</h4>
 
-            <Pagination
-              count={post.post_paginate_total}
-              variant="outlined"
-              color="primary"
-              className="paging"
-              page={post.post_paginate_current}
-              onChange={handlePaginationChange}
-            />
+                <Pagination
+                  count={post.post_paginate_total}
+                  variant="outlined"
+                  color="primary"
+                  className="paging"
+                  page={post.post_paginate_current}
+                  onChange={handlePaginationChange}
+                />
+              </>
+            ) : null}
 
             <div className="tags-area clearfix">
               <div className="post-tags">
