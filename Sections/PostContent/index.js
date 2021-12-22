@@ -19,9 +19,7 @@ const PostContentSection = ({
 
   const [page, setPage] = useState(currentPage);
 
-  useEffect(() => {
-    setPage(currentPage);
-  });
+  useEffect(() => setPage(currentPage));
 
   let dataItems;
   let contentLoading;
@@ -29,7 +27,7 @@ const PostContentSection = ({
   if (!isRobot) {
     const { isLoading, data } = useQuery(
       [`post/${postSlugId}/${postSlugTitle}`, { page }],
-      { staleTime: 5 * 60 * 10000 }
+      { staleTime: 10000 }
     );
 
     contentLoading = isLoading;

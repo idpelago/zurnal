@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider, QueryClient, Hydrate } from "react-query";
 
 import AppContext from "../context/AppContext";
 import queryFn from "../utils/query-fn";
@@ -68,8 +68,10 @@ const App = ({ Component, pageProps }) => {
         }}
       >
         <QueryClientProvider client={queryClient}>
-          {withLayout}
-          <ReactQueryDevtools position="bottom-right" />
+          <Hydrate state={pageProps.dehydratedState}>
+            {withLayout}
+            <ReactQueryDevtools position="bottom-right" />
+          </Hydrate>
         </QueryClientProvider>
       </AppContext.Provider>
     </>
