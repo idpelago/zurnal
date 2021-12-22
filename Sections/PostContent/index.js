@@ -19,9 +19,7 @@ const PostContentSection = ({
 
   const [page, setPage] = useState(currentPage);
 
-  useEffect(() => {
-    setPage(currentPage);
-  });
+  useEffect(() => setPage(currentPage));
 
   let dataItems;
 
@@ -50,17 +48,19 @@ const PostContentSection = ({
   const { items: post } = dataItems;
 
   const handlePaginationChange = (e, value) => {
-    setPage(value);
 
-    router.push({
-      pathname: router.pathname,
-      query: {
-        ...router.query,
-        postSlugId: postSlugId,
-        postSlugTitle: postSlugTitle,
-        page: value,
-      },
-    });
+    return new Promise((resolve) => resolve())
+      .then(() => {
+        router.push({
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            postSlugId: postSlugId,
+            postSlugTitle: postSlugTitle,
+            page: value,
+          },
+        });
+      })
   };
 
   return (
