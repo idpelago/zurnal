@@ -29,6 +29,7 @@ const PostContentSection = ({
   });
 
   let dataItems;
+  let contentLoading = true;
 
   if (!isRobot) {
     const { isLoading, data } = useQuery(
@@ -36,7 +37,9 @@ const PostContentSection = ({
       { staleTime: 5 * 60 * 1000 }
     );
 
-    if (isLoading) return <PostContentSkeleton />;
+    contentLoading = isLoading;
+
+    if (contentLoading) return <PostContentSkeleton />;
 
     dataItems = data;
   } else {
@@ -55,6 +58,8 @@ const PostContentSection = ({
   const { items: post } = dataItems;
 
   const handlePaginationChange = (e, value) => {
+    contentLoading = true;
+
     setPage(value);
 
     router.push({
@@ -99,6 +104,12 @@ const PostContentSection = ({
                 alt={post.title}
               />
             </div>
+
+            {post.post_paginate_total > 1 && post.post_paginate_current > 1 ? (
+              <div>
+                Page {post.post_paginate_current} of {post.post_paginate_total}
+              </div>
+            ) : null}
 
             <div
               className="entry-content"
@@ -164,7 +175,7 @@ const PostContentSection = ({
           </div>
         </div>
 
-        <nav className="post-navigation clearfix">
+        {/* <nav className="post-navigation clearfix">
           <>
             <div className="post-previous">
               {post.previous_post && (
@@ -192,7 +203,7 @@ const PostContentSection = ({
               )}
             </div>
           </>
-        </nav>
+        </nav> */}
       </div>
     </>
   );
