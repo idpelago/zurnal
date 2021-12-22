@@ -29,7 +29,7 @@ const PostContentSection = ({
   if (!isRobot) {
     const { isLoading, data } = useQuery(
       [`post/${postSlugId}/${postSlugTitle}`, { page }],
-      { staleTime: 5 * 60 * 1000 }
+      { staleTime: 5 * 60 * 10000 }
     );
 
     contentLoading = isLoading;
