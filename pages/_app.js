@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider, QueryClient, QueryCache, ReactQueryCacheProvider } from "react-query";
 
 import AppContext from "../context/AppContext";
 import queryFn from "../utils/query-fn";
@@ -12,6 +12,7 @@ import config from "../utils/config";
 import "nprogress/nprogress.css";
 import "../styles/globals.scss";
 
+const queryCache = new QueryCache();
 const TopProgressBar = dynamic(() => import("../Components/TopProgressBar"), {
   ssr: false,
 });
@@ -61,17 +62,19 @@ const App = ({ Component, pageProps }) => {
 
       <TopProgressBar />
 
-      <AppContext.Provider
-        value={{
-          state: { mode },
-          setMode: mode,
-        }}
-      >
-        <QueryClientProvider client={queryClient}>
-          {withLayout}
-          <ReactQueryDevtools position="bottom-right" />
-        </QueryClientProvider>
-      </AppContext.Provider>
+      <ReactQueryCacheProvider queryCache={queryCache}>
+        <AppContext.Provider
+          value={{
+            state: { mode },
+            setMode: mode,
+          }}
+        >
+          <QueryClientProvider client={queryClient}>
+            {withLayout}
+            <ReactQueryDevtools position="bottom-right" />
+          </QueryClientProvider>
+        </AppContext.Provider>
+      </ReactQueryCacheProvider>
     </>
   );
 };

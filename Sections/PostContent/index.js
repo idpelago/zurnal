@@ -24,7 +24,7 @@ const PostContentSection = ({
   });
 
   let dataItems;
-  let contentLoading = true;
+  let contentLoading;
 
   if (!isRobot) {
     const { isLoading, data } = useQuery(
