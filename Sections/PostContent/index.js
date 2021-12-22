@@ -6,12 +6,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import MetaHeader from "../../Components/MetaHeader";
 import PostContentSkeleton from "../../Components/PostContentSkeleton";
 
-import {
-  CategoryLink,
-  PostLink,
-  TagLink,
-  UserLink,
-} from "../../utils/link-generator";
+import { CategoryLink, TagLink, UserLink } from "../../utils/link-generator";
 
 const PostContentSection = ({
   ssrData,
