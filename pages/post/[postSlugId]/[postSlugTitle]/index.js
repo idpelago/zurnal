@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -23,9 +21,6 @@ const PostContent = (props) => {
 
   return (
     <>
-      <Script src="//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=396954390897339&version=v2.0"
-        strategy="lazyOnload" />
-
       <section className="utf_block_wrapper">
         <div className="container">
           <div className="row">
