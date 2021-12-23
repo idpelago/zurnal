@@ -58,8 +58,6 @@ const App = ({ Component, pageProps }) => {
         strategy="beforeInteractive"
       />
       <Script src="/scripts/main.js" strategy="beforeInteractive" />
-      <Script src="//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=396954390897339&version=v2.0"
-        strategy="lazyOnload" />
 
       <TopProgressBar />
 
