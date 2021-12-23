@@ -25,11 +25,17 @@ const PostContent = (props) => {
   const { minWidth } = config;
   const [mode, setMode] = useState();
 
+  const calWidth = () => setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
+
   useEffect(() => {
-    setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
+    calWidth();
 
     setTimeout(() => window.FB.XFBML.parse(), 1000)
   }, [postSlugId, postSlugTitle]);
+
+  useEffect(() => {
+    window.addEventListener("resize", calWidth, false);
+  }, [])
 
   return (
     <>

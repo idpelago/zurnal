@@ -8,10 +8,6 @@ module.exports = [
         destination: "/sitemap/posts/index.xml",
     },
     {
-        source: "/categories/sitemap.xml",
-        destination: "/sitemap/categories/index.xml",
-    },
-    {
         source: "/posts/sitemap-post-:id.xml",
         destination: "/sitemap/posts/content.xml",
     },
