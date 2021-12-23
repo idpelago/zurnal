@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import Layout from "../../../../Components/Layout";
@@ -11,8 +11,6 @@ import { getPost } from "../../../../apis";
 import { processSSR } from "../../../../utils/helpers";
 
 const PostContent = (props) => {
-  const [mounted, setMounted] = useState();
-
   const router = useRouter();
   const { postSlugId, postSlugTitle } = router.query;
   const params = {
@@ -20,21 +18,6 @@ const PostContent = (props) => {
     postSlugTitle,
     ...props,
   };
-
-  useEffect(() => {
-    function loadAPI() {
-      var js = document.createElement("script");
-
-      js.src =
-        "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=396954390897339&version=v2.0";
-      document.body.appendChild(js);
-      setMounted(true);
-    }
-
-    setTimeout(() => {
-      if (!mounted) loadAPI()
-    }, 1000);
-  }, [postSlugId, postSlugTitle]);
 
   return (
     <section className="utf_block_wrapper">
