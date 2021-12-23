@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 function MetaHeader({ title = null, description = null, type = null }) {
-  const siteUrl = process.env.SITE_URL;
+  const siteUrl = 'https://www.zurnal.co';
   const ogImage = `${siteUrl}/img/idpelago-og.jpg`;
 
   let normalizedUrl;
