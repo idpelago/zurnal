@@ -1,7 +1,11 @@
 import Head from "next/head";
+import { useEffect } from "react";
+
+import getConfig from 'next/config'
+const { publicRuntimeConfig } = getConfig()
+const { SITE_URL: siteUrl } = publicRuntimeConfig;
 
 function MetaHeader({ title = null, description = null, type = null }) {
-  const siteUrl = 'https://www.zurnal.co';
   const ogImage = `${siteUrl}/img/idpelago-og.jpg`;
 
   let normalizedUrl;

@@ -13,6 +13,10 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
 
+  publicRuntimeConfig: {
+    SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  },
+
   async rewrites() {
     return routes;
   },
