@@ -28,7 +28,6 @@ function PostMetaHeader({ elem }) {
         name="twitter:title"
         content={normalizedTitle}
       />
-      <meta property="og:url" content={normalizedUrl} />
       <meta name="author" content={brandName} />
       <meta name="description" content={normalizedDescription} />
       <meta name="twitter:site" content="@zurnal" />
@@ -36,9 +35,13 @@ function PostMetaHeader({ elem }) {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={normalizedDescription} />
       <meta name="twitter:image" content={ogImage} />
+
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:secure_url" content={ogImage} />
-      <meta property="og:description" content={normalizedDescription} /> */}
+      <meta property="og:description" content={normalizedDescription} />
+      <meta property="og:url" content={normalizedUrl} />
+
+      <link rel="canonical" href={normalizedUrl} />
     </Head>
   );
 }

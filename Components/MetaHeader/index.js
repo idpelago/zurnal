@@ -63,6 +63,8 @@ function MetaHeader({ title = null, description = null, type = null }) {
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:secure_url" content={ogImage} />
       <meta property="og:description" content={normalizedDescription} />
+
+      <link rel="canonical" href={normalizedUrl} />
     </Head>
   );
 }
