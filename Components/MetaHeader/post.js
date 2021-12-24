@@ -22,7 +22,7 @@ function PostMetaHeader({ elem }) {
   return (
     <Head>
       <title key="title">{normalizedTitle}</title>
-      <meta key="og:title" name="og:title" content={normalizedTitle} />
+      <meta key="og:title" property="og:title" content={normalizedTitle} />
       <meta
         key="twitter:title"
         name="twitter:title"
