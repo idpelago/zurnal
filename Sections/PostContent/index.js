@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Pagination from "@material-ui/lab/Pagination";
 
-import MetaHeader from "../../Components/MetaHeader";
+import PostMetaHeader from "../../Components/MetaHeader/post";
 import PostContentSkeleton from "../../Components/PostContentSkeleton";
 
 import { CategoryLink, TagLink, UserLink } from "../../utils/link-generator";
@@ -50,24 +50,22 @@ const PostContentSection = ({
   const { items: post } = dataItems;
 
   const handlePaginationChange = (e, value) => {
-
-    return new Promise((resolve) => resolve())
-      .then(() => {
-        router.push({
-          pathname: router.pathname,
-          query: {
-            ...router.query,
-            postSlugId: postSlugId,
-            postSlugTitle: postSlugTitle,
-            page: value,
-          },
-        });
-      })
+    return new Promise((resolve) => resolve()).then(() => {
+      router.push({
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          postSlugId: postSlugId,
+          postSlugTitle: postSlugTitle,
+          page: value,
+        },
+      });
+    });
   };
 
   return (
     <>
-      <MetaHeader title={post.title} description={post.excerpt} type="post" />
+      <PostMetaHeader elem={post} />
 
       <div className="col-lg-8 col-md-12">
         <div className="single-post">
@@ -97,11 +95,11 @@ const PostContentSection = ({
               />
             </div>
 
-            {post.post_paginate_total > 1 && post.post_paginate_current > 1 ? (
+            {post.post_paginate_total > 1 && (
               <div>
                 Page {post.post_paginate_current} of {post.post_paginate_total}
               </div>
-            ) : null}
+            )}
 
             <div
               className="entry-content"
@@ -110,7 +108,7 @@ const PostContentSection = ({
               }}
             ></div>
 
-            {post.post_paginate_total > 1 ? (
+            {post.post_paginate_total > 1 && (
               <>
                 <h4>Halaman Berikutnya :</h4>
 
@@ -123,7 +121,7 @@ const PostContentSection = ({
                   onChange={handlePaginationChange}
                 />
               </>
-            ) : null}
+            )}
 
             <div className="tags-area clearfix">
               <div className="post-tags">

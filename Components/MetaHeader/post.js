@@ -4,42 +4,20 @@ import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 const { SITE_URL: siteUrl } = publicRuntimeConfig;
 
-function MetaHeader({ title = null, description = null, type = null }) {
-  const ogImage = `${siteUrl}/img/idpelago-og.jpg`;
+function PostMetaHeader({ elem }) {
+  const brandName = `Zurnal`;
+  const brandSlogan = `Entertain, Inspire & Educate`;
 
-  let normalizedUrl;
-
-  switch (type) {
-    case "category":
-      normalizedUrl = `${siteUrl}/category/${title}`;
-      break;
-
-    case "user":
-      normalizedUrl = `${siteUrl}/user/${title}`;
-      break;
-
-    case "tag":
-      normalizedUrl = `${siteUrl}/tag/${title}`;
-      break;
-
-    case "post":
-      normalizedUrl = `${siteUrl}/post/${title}`;
-      break;
-
-    default:
-      normalizedUrl = `${siteUrl}/`;
-      break;
-  }
-
+  const { title, excerpt } = elem;
   const normalizedTitle =
     title !== null
-      ? `${title} | Zurnal`
-      : "Zurnal | Entertain, Inspire & Educate";
+      ? `${title} | ${brandName}`
+      : `${brandName} | ${brandSlogan}`;
 
-  const normalizedDescription =
-    description !== null
-      ? `View all posts from ${description} category on Zurnal.co`
-      : "Entertain, Inspire & Educate";
+  const normalizedDescription = excerpt !== null ? excerpt : brandSlogan;
+
+  const normalizedUrl = `${siteUrl}/post/${elem.post_slug_id}/${elem.post_slug_title}`;
+  const ogImage = elem.featured_image;
 
   return (
     <Head>
@@ -51,20 +29,18 @@ function MetaHeader({ title = null, description = null, type = null }) {
         content={normalizedTitle}
       />
       <meta property="og:url" content={normalizedUrl} />
-      <meta name="author" content="Zurnal" />
+      <meta name="author" content={brandName} />
       <meta name="description" content={normalizedDescription} />
-
       <meta name="twitter:site" content="@zurnal" />
       <meta name="twitter:creator" content="@zurnal" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:description" content={normalizedDescription} />
-
       <meta name="twitter:image" content={ogImage} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:secure_url" content={ogImage} />
-      <meta property="og:description" content={normalizedDescription} />
+      <meta property="og:description" content={normalizedDescription} /> */}
     </Head>
   );
 }
 
-export default MetaHeader;
+export default PostMetaHeader;
