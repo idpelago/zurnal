@@ -25,29 +25,34 @@ const PostContent = (props) => {
   const { minWidth } = config;
   const [mode, setMode] = useState();
 
-  const calWidth = () => setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
+  const calWidth = () =>
+    setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
 
   useEffect(() => {
     calWidth();
 
-    setTimeout(() => window.FB.XFBML.parse(), 1000)
+    setTimeout(() => window.FB.XFBML.parse(), 1000);
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {
     window.addEventListener("resize", calWidth, false);
-  }, [])
+
+    return () => window.removeEventListener("resize", calWidth);
+  }, []);
 
   return (
     <>
-      <Script src="//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=396954390897339&version=v2.0"
-        strategy="afterInteractive" />
+      <Script
+        src="//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=396954390897339&version=v2.0"
+        strategy="afterInteractive"
+      />
 
       <section className="utf_block_wrapper">
         <div className="container">
           <div className="row">
             <PostContentSection {...params} />
 
-            {mode == 'desktop' ? <NewsFeedRightSection /> : ''}
+            {mode == "desktop" ? <NewsFeedRightSection /> : ""}
           </div>
 
           <div className="row">

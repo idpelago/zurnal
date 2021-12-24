@@ -47,7 +47,11 @@ const PostList = ({ elem }) => {
           </span>
         </div>
 
-        <p>{elem.excerpt}</p>
+        <div className="utf_post_excerpt">
+          <PostLink elem={elem}>
+            <a>{elem.excerpt}</a>
+          </PostLink>
+        </div>
       </div>
     </div>
   );

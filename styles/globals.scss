@@ -9158,6 +9158,12 @@ span.post-comment span {
 .utf_post_block_style .utf_post_content {
   padding: 0;
 }
+.utf_post_block_style .utf_post_content .utf_post_excerpt a {
+  color: #1c1c1c;
+}
+.utf_post_block_style .utf_post_content p:hover {
+  cursor: pointer;
+}
 .utf_post_block_style .utf_post_title a:hover {
   color: #ec0000;
   -webkit-transition: all 0.4s ease-in-out;
@@ -12336,11 +12342,11 @@ label {
   }
 }
 @media (max-width: 768px) {
-    .redirecting {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
+  .redirecting {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 img {
