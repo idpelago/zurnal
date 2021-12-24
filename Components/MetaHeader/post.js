@@ -1,6 +1,7 @@
 import Head from "next/head";
-
 import getConfig from "next/config";
+import { getPostUrl } from "../../utils/url-path";
+
 const { publicRuntimeConfig } = getConfig();
 const { SITE_URL: siteUrl } = publicRuntimeConfig;
 
@@ -16,7 +17,9 @@ function PostMetaHeader({ elem }) {
 
   const normalizedDescription = excerpt !== null ? excerpt : brandSlogan;
 
-  const normalizedUrl = `${siteUrl}/post/${elem.post_slug_id}/${elem.post_slug_title}`;
+  const postUrl = getPostUrl(elem);
+  const normalizedUrl = `${siteUrl}${postUrl}`;
+
   const ogImage = elem.featured_image;
 
   return (

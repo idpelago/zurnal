@@ -1,12 +1,15 @@
 import Link from "next/link";
+import { getPostUrl, getUserUrl, getCategoryUrl, getTagUrl } from "./url-path";
 
 export const PostLink = ({ elem, children }) => {
+  const url = getPostUrl(elem);
+
   return (
     <Link
       href={{
-        pathname: `/post/${elem.post_slug_id}/${elem.post_slug_title}`,
+        pathname: url,
       }}
-      as={`/post/${elem.post_slug_id}/${elem.post_slug_title}`}
+      as={url}
       shallow
       passHref
     >
@@ -16,12 +19,14 @@ export const PostLink = ({ elem, children }) => {
 };
 
 export const UserLink = ({ elem, children }) => {
+  const url = getUserUrl(elem);
+
   return (
     <Link
       href={{
-        pathname: `/user/${elem.username}`,
+        pathname: url,
       }}
-      as={`/user/${elem.username}`}
+      as={url}
       shallow
       passHref
     >
@@ -31,13 +36,15 @@ export const UserLink = ({ elem, children }) => {
 };
 
 export const CategoryLink = ({ elem, children }) => {
+  const url = getCategoryUrl(elem);
+
   return (
     <Link
       className="utf_post_cat"
       href={{
-        pathname: `/category/${elem.category.slug}`,
+        pathname: url,
       }}
-      as={`/category/${elem.category.slug}`}
+      as={url}
       shallow
       passHref
     >
@@ -47,12 +54,14 @@ export const CategoryLink = ({ elem, children }) => {
 };
 
 export const TagLink = ({ elem, children }) => {
+  const url = getTagUrl(elem);
+
   return (
     <Link
       href={{
-        pathname: `/tag/${elem.slug}`,
+        pathname: url,
       }}
-      as={`/tag/${elem.slug}`}
+      as={url}
       shallow
       passHref
     >
