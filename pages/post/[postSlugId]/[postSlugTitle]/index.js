@@ -31,7 +31,7 @@ const PostContent = (props) => {
   useEffect(() => {
     calWidth();
 
-    setTimeout(() => window.FB.XFBML.parse(), 1000);
+    setTimeout(() => window.FB?.XFBML.parse(), 1000);
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {
