@@ -35,6 +35,11 @@ const PostContent = (props) => {
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {
+    const handleChange = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+    router.events.on("routeChangeComplete", handleChange);
+
+    // Watch resize event
     window.addEventListener("resize", calWidth, false);
 
     return () => window.removeEventListener("resize", calWidth);

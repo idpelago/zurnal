@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
 
+import useScrollRestoration from "../hooks/use-scroll-restoration";
+
 import AppContext from "../context/AppContext";
 import queryFn from "../utils/query-fn";
 import config from "../utils/config";
@@ -42,6 +44,8 @@ const App = ({ Component, pageProps }) => {
   useEffect(() => {
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
   }, []);
+
+  useScrollRestoration(router);
 
   return (
     <>
