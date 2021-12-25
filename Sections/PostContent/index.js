@@ -14,8 +14,6 @@ const PostContentSection = ({
   postSlugId,
   postSlugTitle,
 }) => {
-  const [mounted, setMounted] = useState(false);
-
   const router = useRouter();
   const { page: currentPage = 1 } = router.query;
 
