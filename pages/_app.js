@@ -41,10 +41,6 @@ const App = ({ Component, pageProps }) => {
 
   useEffect(() => {
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
-
-    const handleChange = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-    router.events.on("routeChangeComplete", handleChange);
   }, []);
 
   return (
