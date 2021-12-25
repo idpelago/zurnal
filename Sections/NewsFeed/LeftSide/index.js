@@ -26,7 +26,7 @@ const NewsFeedLeftSection = ({
 
   if (!isRobot) {
     const { isLoading, data } = useQuery([`${queryKey}`, { page }], {
-      staleTime: 5 * 60 * 1000,
+      staleTime: 5 * 60 * 10000,
       keepPreviousData: false,
     });
 
