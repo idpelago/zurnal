@@ -35,14 +35,20 @@ const PostContent = (props) => {
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {
-    const handleChange = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    const handleRouteChange = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-    router.events.on("routeChangeComplete", handleChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
 
     // Watch resize event
     window.addEventListener("resize", calWidth, false);
 
-    return () => window.removeEventListener("resize", calWidth);
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+
+      window.removeEventListener("resize", calWidth);
+    };
   }, []);
 
   return (
