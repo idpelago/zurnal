@@ -28,15 +28,18 @@ const PostContent = (props) => {
   const calWidth = () =>
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
 
+  const handleRouteChange = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  };
+
   useEffect(() => {
     calWidth();
+    handleRouteChange();
 
     setTimeout(() => window.FB?.XFBML.parse(), 1000);
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {
-    const handleRouteChange = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
     router.events.on("routeChangeComplete", handleRouteChange);
 
     // Watch resize event
