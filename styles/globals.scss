@@ -12363,6 +12363,8 @@ img {
   font-size: 0;
 }
 
-#comments {
+#comments,
+.fb_iframe_widget_iframe,
+.fb_iframe_widget_fluid_desktop {
   width: 100% !important;
 }
