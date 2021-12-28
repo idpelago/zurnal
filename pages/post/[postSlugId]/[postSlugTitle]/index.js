@@ -54,6 +54,10 @@ const PostContent = (props) => {
     };
   }, []);
 
+  useEffect(() => {
+    handleRouteChange();
+  });
+
   return (
     <>
       <Script
