@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 
 import Layout from "../../../../Components/Layout";
@@ -9,11 +9,16 @@ import WithLayout from "../../../../Components/WithLayout";
 import PostContentSection from "../../../../Sections/PostContent";
 import NewsFeedRightSection from "../../../../Sections/NewsFeed/RightSide";
 
+import { useIntersection } from "../../../../hooks/use-intersection";
+
 import { getPost } from "../../../../apis";
 import { processSSR } from "../../../../utils/helpers";
 import config from "../../../../utils/config";
 
 const PostContent = (props) => {
+  const domRef = useRef();
+  const [isInView, setIsInView] = useState(false);
+
   const router = useRouter();
   const { postSlugId, postSlugTitle } = router.query;
   const params = {
@@ -28,15 +33,19 @@ const PostContent = (props) => {
   const calWidth = () =>
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
 
+  useIntersection(domRef, () => {
+    setIsInView(true);
+
+    () => window.FB.XFBML.parse();
+  });
+
   const handleRouteChange = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
     calWidth();
     handleRouteChange();
-
-    setTimeout(() => window.FB?.XFBML.parse(), 1000);
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {
@@ -67,24 +76,26 @@ const PostContent = (props) => {
 
       <section className="utf_block_wrapper">
         <div className="container">
-          <div className="row">
+          <div ref={domRef} className="row">
             <PostContentSection {...params} />
 
             {mode == "desktop" ? <NewsFeedRightSection /> : ""}
           </div>
 
           <div className="row">
-            <div className="col-lg-8 col-md-12">
-              <div id="fb-root"></div>
-              <div
-                id="comments"
-                className="fb-comments"
-                data-href={`https://www.zurnal.co/post/${postSlugId}/${postSlugTitle}`}
-                data-colorscheme="light"
-                data-width="100%"
-                data-numposts="5"
-              ></div>
-            </div>
+            {isInView && (
+              <div className="col-lg-8 col-md-12">
+                <div id="fb-root"></div>
+                <div
+                  id="comments"
+                  className="fb-comments"
+                  data-href={`https://www.zurnal.co/post/${postSlugId}/${postSlugTitle}`}
+                  data-colorscheme="light"
+                  data-width="100%"
+                  data-numposts="5"
+                ></div>
+              </div>
+            )}
           </div>
         </div>
       </section>
