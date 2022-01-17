@@ -36,6 +36,15 @@ const NewsFeedLeftSection = ({
     dataItems = ssrData;
   }
 
+  if (dataItems.items.length == 0) {
+    router.push("/");
+    return (
+      <div className="col-lg-8 col-md-12">
+        <div className="redirecting">Redirecting ....</div>
+      </div>
+    );
+  }
+
   const { items } = dataItems;
 
   if (!items)
@@ -50,16 +59,15 @@ const NewsFeedLeftSection = ({
   const { data: posts } = items;
 
   const handlePaginationChange = (e, value) => {
-    return new Promise((resolve) => resolve())
-      .then(() => {
-        router.push({
-          pathname: router.pathname,
-          query: {
-            ...router.query,
-            page: value,
-          },
-        });
-      })
+    return new Promise((resolve) => resolve()).then(() => {
+      router.push({
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          page: value,
+        },
+      });
+    });
   };
 
   const PageTypeSection = () => {
