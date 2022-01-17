@@ -33,9 +33,11 @@ const User = (props) => {
   );
 };
 
-export default WithLayout((children) => (props) => (
-  <Layout {...props}>{children}</Layout>
-))(User);
+export default WithLayout((children) => (props) => {
+  const Component = <Layout {...props}>{children}</Layout>;
+
+  return Component;
+})(User);
 
 export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];

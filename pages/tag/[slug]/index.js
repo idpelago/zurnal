@@ -8,6 +8,7 @@ import MetaHeader from "../../../Components/MetaHeader";
 
 import { getTag } from "../../../apis";
 import { processSSR } from "../../../utils/helpers";
+import { Component } from "react";
 
 const Tag = (props) => {
   const router = useRouter();
@@ -33,9 +34,11 @@ const Tag = (props) => {
   );
 };
 
-export default WithLayout((children) => (props) => (
-  <Layout {...props}>{children}</Layout>
-))(Tag);
+export default WithLayout((children) => (props) => {
+  const Component = <Layout {...props}>{children}</Layout>;
+
+  return Component;
+})(Tag);
 
 export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];

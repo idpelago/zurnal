@@ -30,9 +30,11 @@ const Index = (props) => {
   );
 };
 
-export default WithLayout((children) => (props) => (
-  <Layout {...props}>{children}</Layout>
-))(Index);
+export default WithLayout((children) => (props) => {
+  const Component = <Layout {...props}>{children}</Layout>;
+
+  return Component;
+})(Index);
 
 export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];

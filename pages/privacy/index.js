@@ -9,7 +9,7 @@ const Privacy = () => {
           <div className="col-lg-8 col-md-12">
             <div className="single-post">
               <div
-                class="tab-content translations-content-item en visible"
+                className="tab-content translations-content-item en visible"
                 id="en"
               >
                 <h1>Privacy Policy</h1>
@@ -104,7 +104,7 @@ const Privacy = () => {
                       from{" "}
                       <a
                         href="https://www.zurnal.co"
-                        rel="external nofollow noopener"
+                        rel="external nofollow noopener noreferrer"
                         target="_blank"
                       >
                         https://www.zurnal.co
@@ -190,7 +190,7 @@ const Privacy = () => {
                     or deleting local shared objects?" available at{" "}
                     <a
                       href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"
-                      rel="external nofollow noopener"
+                      rel="external nofollow noopener noreferrer"
                       target="_blank"
                     >
                       https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_
@@ -533,6 +533,8 @@ const Privacy = () => {
   );
 };
 
-export default WithLayout((children) => (props) => (
-  <Layout {...props}>{children}</Layout>
-))(Privacy);
+export default WithLayout((children) => (props) => {
+  const Component = <Layout {...props}>{children}</Layout>;
+
+  return Component;
+})(Privacy);

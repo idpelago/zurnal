@@ -104,9 +104,11 @@ const PostContent = (props) => {
   );
 };
 
-export default WithLayout((children) => (props) => (
-  <Layout {...props}>{children}</Layout>
-))(PostContent);
+export default WithLayout((children) => (props) => {
+  const Component = <Layout {...props}>{children}</Layout>;
+
+  return Component;
+})(PostContent);
 
 export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];
