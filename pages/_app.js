@@ -8,6 +8,8 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import useScrollRestoration from "../hooks/use-scroll-restoration";
 
 import AppContext from "../context/AppContext";
+import { ThemeProvider } from "../context/theme-context";
+
 import queryFn from "../utils/query-fn";
 import config from "../utils/config";
 
@@ -40,9 +42,14 @@ const App = ({ Component, pageProps }) => {
 
   const { minWidth } = config;
   const [mode, setMode] = useState();
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
+
+    let theme = localStorage.getItem("theme");
+
+    localStorage.setItem("theme", theme ? theme : "light");
   }, []);
 
   useScrollRestoration(router);
@@ -64,13 +71,15 @@ const App = ({ Component, pageProps }) => {
       <AppContext.Provider
         value={{
           state: { mode },
-          setMode: mode,
+          setMode: mode
         }}
       >
-        <QueryClientProvider client={queryClient}>
-          {withLayout}
-          <ReactQueryDevtools position="bottom-right" />
-        </QueryClientProvider>
+        <ThemeProvider>
+          <QueryClientProvider client={queryClient}>
+            {withLayout}
+            <ReactQueryDevtools position="bottom-right" />
+          </QueryClientProvider>
+        </ThemeProvider>
       </AppContext.Provider>
     </>
   );

@@ -2,8 +2,10 @@ import ContentLoader from "react-content-loader";
 import { useContext } from "react";
 
 import AppContext from "../../context/AppContext";
+import { useTheme } from "../../context/theme-context";
 
 const PostContentSkeleton = () => {
+  const theme = useTheme();
   const value = useContext(AppContext);
   const mode = value.state.mode;
 
@@ -31,14 +33,16 @@ const PostContentSkeleton = () => {
   };
 
   const Skeleton = () => {
+    const isLight = theme == "light";
+
     return (
       <ContentLoader
         speed={2}
         style={{ width: "100%" }}
         width={"100%"}
         height={mode == "desktop" ? 600 : 390}
-        backgroundColor={"#f3f3f3"}
-        foregroundColor={"#ecebeb"}
+        backgroundColor={!isLight ? "#272727" : "#f3f3f3"}
+        foregroundColor={!isLight ? "#272727" : "#ecebeb"}
       >
         {mode == "desktop" ? <DesktopSkeleton /> : <MobileSkeleton />}
       </ContentLoader>

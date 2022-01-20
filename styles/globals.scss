@@ -10883,7 +10883,7 @@ ul.nav
 #back-to-top {
   position: fixed;
   right: 25px;
-  bottom: 25px;
+  bottom: 75px;
   z-index: 10;
   -webkit-backface-visibility: hidden;
 }
@@ -12367,4 +12367,86 @@ img {
 .fb_iframe_widget iframe,
 .fb_iframe_widget_fluid_desktop iframe {
   width: 100% !important;
+}
+
+
+#theme-switcher {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 10;
+  -webkit-backface-visibility: hidden;
+}
+#theme-switcher.affix {
+  bottom: 54px;
+}
+#theme-switcher a {
+  width: 36px;
+  height: 36px;
+  line-height: 48px;
+  display: block;
+  text-align: center;
+  background: #ec0000;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 0;
+  border-radius: 30px;
+
+  &:hover {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
+
+body {
+  &.dark {
+    background: #000;
+    color: #fff;
+
+    h1, h2, h3, h4, h5, h6, a {
+      color: #fff;
+    }
+
+    .MuiPaginationItem-root {
+      color: rgba(255, 255, 255, 0.87);
+    }
+    .MuiPaginationItem-outlined {
+      border: 1px solid rgba(255, 255, 255, 0.23)
+    }
+
+    .share-items {
+      border-color: #272727;
+    }
+
+    .post-tags {
+      a {
+        color: #eee;
+      }
+    }
+
+    .utf_newsletter_block {
+      background-color: #272727;
+      border-color: transparent;
+    }
+
+    .utf_post_block_style {
+      .utf_post_content {
+        .utf_post_excerpt {
+          a {
+            &:hover {
+              color: #1c1c1c !important;
+            }
+
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .utf_sticky {
+      &.sticky {
+        background: #000;
+      }
+    }
+  }
 }
