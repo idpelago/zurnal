@@ -12369,7 +12369,6 @@ img {
   width: 100% !important;
 }
 
-
 #theme-switcher {
   position: fixed;
   right: 25px;
@@ -12403,7 +12402,14 @@ body {
     background: #000;
     color: #fff;
 
-    h1, h2, h3, h4, h5, h6, a {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    .entry-content {
       color: #fff;
     }
 
@@ -12411,7 +12417,7 @@ body {
       color: rgba(255, 255, 255, 0.87);
     }
     .MuiPaginationItem-outlined {
-      border: 1px solid rgba(255, 255, 255, 0.23)
+      border: 1px solid rgba(255, 255, 255, 0.23);
     }
 
     .share-items {
