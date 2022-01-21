@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import cookieCutter from "cookie-cutter";
 
 const ThemeContext = createContext();
 const ThemeUpdateContext = createContext();
@@ -32,6 +33,8 @@ export function ThemeProvider({ children }) {
       selectedTheme = prevTheme == lightTheme ? darkTheme : lightTheme;
 
       switchBodyClass(selectedTheme, prevTheme);
+
+      cookieCutter.set("theme", selectedTheme);
 
       localStorage.setItem("theme", selectedTheme);
 

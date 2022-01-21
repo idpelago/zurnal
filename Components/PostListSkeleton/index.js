@@ -6,6 +6,7 @@ import { useTheme } from "../../context/theme-context";
 
 const PostListSkeleton = () => {
   const theme = useTheme();
+
   const value = useContext(AppContext);
   const mode = value.state.mode;
 

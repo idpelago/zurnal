@@ -1,3 +1,6 @@
+import Cookies from "cookies";
+import cookieCutter from "cookie-cutter";
+
 import Script from "next/script";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -10,6 +13,7 @@ import useScrollRestoration from "../hooks/use-scroll-restoration";
 import AppContext from "../context/AppContext";
 import { ThemeProvider } from "../context/theme-context";
 
+import { getHeaderCookie } from "../utils/helpers";
 import queryFn from "../utils/query-fn";
 import config from "../utils/config";
 
@@ -42,14 +46,14 @@ const App = ({ Component, pageProps }) => {
 
   const { minWidth } = config;
   const [mode, setMode] = useState();
-  const [theme, setTheme] = useState("light");
+
+  const { theme = "light" } = pageProps;
 
   useEffect(() => {
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
 
-    let theme = localStorage.getItem("theme");
-
-    localStorage.setItem("theme", theme ? theme : "light");
+    cookieCutter.set("theme", theme);
+    localStorage.setItem("theme", theme);
   }, []);
 
   useScrollRestoration(router);
@@ -71,7 +75,7 @@ const App = ({ Component, pageProps }) => {
       <AppContext.Provider
         value={{
           state: { mode },
-          setMode: mode
+          setMode: mode,
         }}
       >
         <ThemeProvider>
@@ -83,6 +87,19 @@ const App = ({ Component, pageProps }) => {
       </AppContext.Provider>
     </>
   );
+};
+
+App.getInitialProps = async function getInitialProps(context) {
+  const cookie = context.ctx ? context.ctx.req.headers.cookie : null;
+  const theme = getHeaderCookie("theme", cookie);
+
+  const props = {
+    pageProps: {
+      theme,
+    },
+  };
+
+  return props;
 };
 
 export default App;
