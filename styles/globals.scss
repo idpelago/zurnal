@@ -10901,8 +10901,7 @@ ul.nav
   border-radius: 30px;
 }
 #back-to-top .btn.btn-primary:hover {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.9);
+  cursor: pointer;
 }
 
 /* Sub Pages 
@@ -12282,6 +12281,10 @@ label {
     bottom: 10px;
     right: 10px;
   }
+  #theme-switcher {
+    bottom: 50px !important;
+    right: 10px !important;
+  }
   .utf_post_block_style .utf_post_content p {
     margin-bottom: 0;
   }
@@ -12432,8 +12435,7 @@ img {
   border-radius: 30px;
 
   &:hover {
-    color: #fff;
-    background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
   }
 }
 

@@ -5,10 +5,12 @@ const HeaderSection = () => {
     <header id="header" className="header">
       <div className="container">
         <div className="row">
-          <div className="col-md-12 col-sm-12 text-left">
+          <div className="col-md-2 col-sm-2 text-left">
             <div className="logo desktop-logo">
               <Link href={{ pathname: `/` }}>
-                <h1>Zurnal.co</h1>
+                <a>
+                  <h1>Zurnal.co</h1>
+                </a>
               </Link>
             </div>
           </div>
