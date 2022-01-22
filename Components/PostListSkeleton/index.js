@@ -25,9 +25,11 @@ const PostListSkeleton = () => {
   const MobileSkeleton = () => {
     return (
       <>
-        <rect x="0" y="0" rx="3" ry="3" width="100%" height="240" />
-        <rect x="0" y="263" rx="3" ry="3" width="100%" height="25" />
-        <rect x="0" y="303" rx="3" ry="3" width="100%" height="50" />
+        <rect x="0" y="0" rx="3" ry="3" width="36%" height="110" />
+        <rect x="40%" y="0" rx="3" ry="3" width="60%" height="20" />
+        <rect x="40%" y="30" rx="3" ry="3" width="60%" height="20" />
+        <rect x="40%" y="60" rx="3" ry="3" width="60%" height="20" />
+        <rect x="40%" y="90" rx="3" ry="3" width="30%" height="20" />
       </>
     );
   };
@@ -40,7 +42,7 @@ const PostListSkeleton = () => {
         speed={2}
         style={{ width: "100%" }}
         width={"100%"}
-        height={mode == "desktop" ? 223 : 383}
+        height={mode == 'desktop' ? 223 : 130}
         backgroundColor={!isLight ? "#272727" : "#f3f3f3"}
         foregroundColor={!isLight ? "#272727" : "#ecebeb"}
       >
