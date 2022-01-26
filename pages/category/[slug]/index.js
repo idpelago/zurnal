@@ -9,11 +9,7 @@ import MetaHeader from "../../../Components/MetaHeader";
 import { getCategory } from "../../../apis";
 import { processSSR, processThemeCookie } from "../../../utils/helpers";
 
-import useThemeSetter from "../../../hooks/use-theme-setter";
-
 const Category = (props) => {
-  useThemeSetter(props);
-
   const router = useRouter();
   const { slug } = router.query;
 

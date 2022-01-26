@@ -9,11 +9,7 @@ import MetaHeader from "../../../Components/MetaHeader";
 import { getUser } from "../../../apis";
 import { processSSR, processThemeCookie } from "../../../utils/helpers";
 
-import useThemeSetter from "../../../hooks/use-theme-setter";
-
 const User = (props) => {
-  useThemeSetter(props);
-
   const router = useRouter();
   const { username } = router.query;
 

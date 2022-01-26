@@ -9,11 +9,7 @@ import MetaHeader from "../../../Components/MetaHeader";
 import { getTag } from "../../../apis";
 import { processSSR, processThemeCookie } from "../../../utils/helpers";
 
-import useThemeSetter from "../../../hooks/use-theme-setter";
-
 const Tag = (props) => {
-  useThemeSetter(props);
-
   const router = useRouter();
   const { slug } = router.query;
 

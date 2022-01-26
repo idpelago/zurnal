@@ -11,11 +11,7 @@ import MetaHeader from "../Components/MetaHeader";
 import { getPosts } from "../apis";
 import { processSSR, processThemeCookie } from "../utils/helpers";
 
-import useThemeSetter from "../hooks/use-theme-setter";
-
 const Index = (props) => {
-  useThemeSetter(props);
-
   const queryKey = `posts`;
   const params = { queryKey, ...props };
 

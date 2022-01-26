@@ -13,11 +13,7 @@ import { getPost } from "../../../../apis";
 import { processSSR, processThemeCookie } from "../../../../utils/helpers";
 import config from "../../../../utils/config";
 
-import useThemeSetter from "../../../../hooks/use-theme-setter";
-
 const PostContent = (props) => {
-  useThemeSetter(props);
-
   const [isLoaded, setIsLoaded] = useState(false);
 
   const router = useRouter();
