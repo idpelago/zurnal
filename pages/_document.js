@@ -12,9 +12,10 @@ class Document extends NextDocument {
     let year = date.getFullYear();
 
     return (
-      <Html>
+      <Html translate="no">
         <Head>
           <meta charSet="utf-8" />
+          <meta name="google" content="notranslate" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta
             name="google-site-verification"
