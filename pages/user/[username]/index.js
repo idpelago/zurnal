@@ -7,9 +7,13 @@ import WithLayout from "../../../Components/WithLayout";
 import MetaHeader from "../../../Components/MetaHeader";
 
 import { getUser } from "../../../apis";
-import { processSSR } from "../../../utils/helpers";
+import { processSSR, processThemeCookie } from "../../../utils/helpers";
+
+import useThemeSetter from "../../../hooks/use-theme-setter";
 
 const User = (props) => {
+  useThemeSetter(props);
+
   const router = useRouter();
   const { username } = router.query;
 
@@ -43,8 +47,9 @@ export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];
 
   const { username, page = 1 } = query;
+  const theme = processThemeCookie(req);
 
-  const parameters = { username, page };
+  const parameters = { username, page, theme };
 
   return processSSR(userAgent, getUser, parameters);
 };

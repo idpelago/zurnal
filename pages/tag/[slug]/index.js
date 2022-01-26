@@ -7,10 +7,13 @@ import WithLayout from "../../../Components/WithLayout";
 import MetaHeader from "../../../Components/MetaHeader";
 
 import { getTag } from "../../../apis";
-import { processSSR } from "../../../utils/helpers";
-import { Component } from "react";
+import { processSSR, processThemeCookie } from "../../../utils/helpers";
+
+import useThemeSetter from "../../../hooks/use-theme-setter";
 
 const Tag = (props) => {
+  useThemeSetter(props);
+
   const router = useRouter();
   const { slug } = router.query;
 
@@ -44,8 +47,9 @@ export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];
 
   const { slug, page = 1 } = query;
+  const theme = processThemeCookie(req);
 
-  const parameters = { slug, page };
+  const parameters = { slug, page, theme };
 
   return processSSR(userAgent, getTag, parameters);
 };

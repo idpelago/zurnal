@@ -1,4 +1,3 @@
-import Cookies from "cookies";
 import cookieCutter from "cookie-cutter";
 
 import Script from "next/script";
@@ -47,13 +46,8 @@ const App = ({ Component, pageProps }) => {
   const { minWidth } = config;
   const [mode, setMode] = useState();
 
-  const { theme = "light" } = pageProps;
-
   useEffect(() => {
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
-
-    cookieCutter.set("theme", theme);
-    localStorage.setItem("theme", theme);
   }, []);
 
   useScrollRestoration(router);
@@ -87,19 +81,6 @@ const App = ({ Component, pageProps }) => {
       </AppContext.Provider>
     </>
   );
-};
-
-App.getInitialProps = async function getInitialProps(context) {
-  const cookie = context.ctx ? context.ctx.req.headers.cookie : null;
-  const theme = getHeaderCookie("theme", cookie);
-
-  const props = {
-    pageProps: {
-      theme,
-    },
-  };
-
-  return props;
 };
 
 export default App;

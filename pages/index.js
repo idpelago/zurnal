@@ -9,9 +9,13 @@ import WithLayout from "../Components/WithLayout";
 import MetaHeader from "../Components/MetaHeader";
 
 import { getPosts } from "../apis";
-import { processSSR } from "../utils/helpers";
+import { processSSR, processThemeCookie } from "../utils/helpers";
+
+import useThemeSetter from "../hooks/use-theme-setter";
 
 const Index = (props) => {
+  useThemeSetter(props);
+
   const queryKey = `posts`;
   const params = { queryKey, ...props };
 
@@ -40,8 +44,9 @@ export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];
 
   const { page = 1 } = query;
+  const theme = processThemeCookie(req);
 
-  const parameters = { page };
+  const parameters = { page, theme };
 
   return processSSR(userAgent, getPosts, parameters);
 };

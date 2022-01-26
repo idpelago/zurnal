@@ -10,10 +10,14 @@ import PostContentSection from "../../../../Sections/PostContent";
 import NewsFeedRightSection from "../../../../Sections/NewsFeed/RightSide";
 
 import { getPost } from "../../../../apis";
-import { processSSR } from "../../../../utils/helpers";
+import { processSSR, processThemeCookie } from "../../../../utils/helpers";
 import config from "../../../../utils/config";
 
+import useThemeSetter from "../../../../hooks/use-theme-setter";
+
 const PostContent = (props) => {
+  useThemeSetter(props);
+
   const [isLoaded, setIsLoaded] = useState(false);
 
   const router = useRouter();
@@ -114,10 +118,13 @@ export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];
 
   const { postSlugId, postSlugTitle, page = 1 } = query;
+  const theme = processThemeCookie(req);
+
   const parameters = {
     postSlugId,
     postSlugTitle,
     page,
+    theme,
   };
 
   return processSSR(userAgent, getPost, parameters);

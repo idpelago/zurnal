@@ -42,7 +42,13 @@ export const detectRobot = (userAgent) => {
 
   return robots.test(userAgent);
 };
+export const processThemeCookie = (req) => {
+  const cookie = req.headers ? req.headers.cookie : null;
+  const themeCookie = getHeaderCookie("theme", cookie);
+  const theme = themeCookie !== null ? themeCookie : "light";
 
+  return theme;
+};
 export const processSSR = async (userAgent, modelQuery, parameters) => {
   const response = {
     props: {},
@@ -51,7 +57,11 @@ export const processSSR = async (userAgent, modelQuery, parameters) => {
   //   const isRobot = true;
   const isRobot = detectRobot(userAgent);
 
-  if (!isRobot) return response;
+  if (!isRobot) {
+    response.props = parameters;
+
+    return response;
+  }
 
   const ssrData = await modelQuery(parameters);
 

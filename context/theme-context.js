@@ -16,7 +16,7 @@ export function ThemeProvider({ children }) {
   let lightTheme = "light";
   let darkTheme = "dark";
 
-  const [theme, setTheme] = useState(darkTheme);
+  const [theme, setTheme] = useState();
 
   useEffect(() => {
     let storedTheme = localStorage.getItem("theme");
