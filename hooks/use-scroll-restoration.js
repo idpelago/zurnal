@@ -14,7 +14,7 @@ function restoreScrollPos(url) {
   }
 }
 
-export function useScrollRestoration(router) {
+export default function useScrollRestoration(router) {
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       let shouldScrollRestore = false;
@@ -62,5 +62,3 @@ export function useScrollRestoration(router) {
     }
   }, [router]);
 }
-
-export default () => {};
