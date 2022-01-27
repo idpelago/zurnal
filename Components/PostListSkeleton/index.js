@@ -42,9 +42,9 @@ const PostListSkeleton = () => {
         speed={2}
         style={{ width: "100%" }}
         width={"100%"}
-        height={mode == 'desktop' ? 223 : 130}
-        backgroundColor={!isLight ? "#272727" : "#f3f3f3"}
-        foregroundColor={!isLight ? "#272727" : "#ecebeb"}
+        height={mode == "desktop" ? 223 : 130}
+        backgroundColor={isLight ? "#f3f3f3" : "#272727"}
+        foregroundColor={isLight ? "#ecebeb" : "#272727"}
       >
         {mode == "desktop" ? <DesktopSkeleton /> : <MobileSkeleton />}
       </ContentLoader>

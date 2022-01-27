@@ -12,7 +12,6 @@ import useScrollRestoration from "../hooks/use-scroll-restoration";
 import AppContext from "../context/AppContext";
 import { ThemeProvider } from "../context/theme-context";
 
-import { getHeaderCookie } from "../utils/helpers";
 import queryFn from "../utils/query-fn";
 import config from "../utils/config";
 

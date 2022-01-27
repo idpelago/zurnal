@@ -41,8 +41,8 @@ const PostContentSkeleton = () => {
         style={{ width: "100%" }}
         width={"100%"}
         height={mode == "desktop" ? 600 : 390}
-        backgroundColor={!isLight ? "#272727" : "#f3f3f3"}
-        foregroundColor={!isLight ? "#272727" : "#ecebeb"}
+        backgroundColor={isLight ? "#f3f3f3" : "#272727"}
+        foregroundColor={isLight ? "#ecebeb" : "#272727"}
       >
         {mode == "desktop" ? <DesktopSkeleton /> : <MobileSkeleton />}
       </ContentLoader>
