@@ -11216,6 +11216,7 @@ ul.nav
 #utf_latest_news_slide {
   display: inline-flex;
   .item {
+    width: 33.3%;
     &:nth-child(2) {
       padding: 0px 20px;
     }
@@ -12462,6 +12463,9 @@ body {
     .entry-content,
     .single-post p {
       color: #fff;
+    }
+    blockquote p {
+      color: #000 !important;
     }
 
     .MuiPaginationItem-root {
