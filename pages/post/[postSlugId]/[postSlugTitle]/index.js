@@ -9,6 +9,7 @@ import WithLayout from "../../../../Components/WithLayout";
 import PostContentSection from "../../../../Sections/PostContent";
 import NewsFeedRightSection from "../../../../Sections/NewsFeed/RightSide";
 import RelatedPostsSection from "../../../../Sections/RelatedPosts";
+import PostCommentSection from "../../../../Sections/PostComment";
 
 import { getPost } from "../../../../apis";
 import { processSSR, processThemeCookie } from "../../../../utils/helpers";
@@ -78,26 +79,7 @@ const PostContent = (props) => {
           </div>
 
           <RelatedPostsSection {...params} />
-
-          <div className="row">
-            <div className="col-lg-8 col-md-12">
-              {!isLoaded ? (
-                <>Loading Comments...</>
-              ) : (
-                <>
-                  <div id="fb-root"></div>
-                  <div
-                    id="comments"
-                    className="fb-comments"
-                    data-href={`https://www.zurnal.co/post/${postSlugId}/${postSlugTitle}`}
-                    data-colorscheme="light"
-                    data-width="100%"
-                    data-numposts="5"
-                  ></div>
-                </>
-              )}
-            </div>
-          </div>
+          <PostCommentSection isLoaded={isLoaded} {...params} />
         </div>
       </section>
     </>

@@ -1,9 +1,11 @@
 import { useQuery } from "react-query";
+import { useRouter } from "next/router";
 import { CategoryLink, PostLink } from "../../utils/link-generator";
 
 const RelatedPosts = ({ postSlugId, postSlugTitle, isRobot }) => {
   if (isRobot) return <></>;
 
+  const router = useRouter();
   const { isLoading, data } = useQuery(
     [`related/post/${postSlugId}/${postSlugTitle}`],
     { staleTime: 5 * 60 * 10000 }

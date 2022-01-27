@@ -10,7 +10,6 @@ export const PostLink = ({ elem, children }) => {
         pathname: url,
       }}
       as={url}
-      shallow
       passHref
     >
       {children}
@@ -27,7 +26,6 @@ export const UserLink = ({ elem, children }) => {
         pathname: url,
       }}
       as={url}
-      shallow
       passHref
     >
       {children}
@@ -45,7 +43,6 @@ export const CategoryLink = ({ elem, children }) => {
         pathname: url,
       }}
       as={url}
-      shallow
       passHref
     >
       {children}
@@ -62,7 +59,6 @@ export const TagLink = ({ elem, children }) => {
         pathname: url,
       }}
       as={url}
-      shallow
       passHref
     >
       {children}
