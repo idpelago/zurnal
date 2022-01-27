@@ -11215,6 +11215,11 @@ ul.nav
 }
 #utf_latest_news_slide {
   display: inline-flex;
+  .utf_post_thumb {
+    a {
+      display: block;
+    }
+  }
   .item {
     width: 33.3%;
     &:nth-child(1) {
