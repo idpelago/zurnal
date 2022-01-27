@@ -13,3 +13,11 @@ export const getPost = async ({ postSlugId, postSlugTitle, page = null }) => {
     query: postQuery,
   });
 };
+
+export const getRelatedPosts = async ({ postSlugId, postSlugTitle }) => {
+  let postQuery = {};
+
+  return await api(`GET`, `related/${postSlugId}/${postSlugTitle}`, {
+    query: postQuery,
+  });
+};

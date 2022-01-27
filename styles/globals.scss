@@ -11213,6 +11213,14 @@ ul.nav
   height: 240px;
   margin-bottom: 20px;
 }
+#utf_latest_news_slide {
+  display: inline-flex;
+  .item {
+    &:nth-child(2) {
+      padding: 0px 20px;
+    }
+  }
+}
 .comments-area {
   margin: 40px 0;
 }

@@ -8,6 +8,7 @@ import WithLayout from "../../../../Components/WithLayout";
 
 import PostContentSection from "../../../../Sections/PostContent";
 import NewsFeedRightSection from "../../../../Sections/NewsFeed/RightSide";
+import RelatedPostsSection from "../../../../Sections/RelatedPosts";
 
 import { getPost } from "../../../../apis";
 import { processSSR, processThemeCookie } from "../../../../utils/helpers";
@@ -39,7 +40,7 @@ const PostContent = (props) => {
       .then(() => calWidth())
       .then(() => handleRouteChange())
       .then(() => setIsLoaded(true))
-      .then(() => window.FB.XFBML.parse());
+      .then(() => window.FB?.XFBML.parse());
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {
@@ -75,6 +76,8 @@ const PostContent = (props) => {
 
             {mode == "desktop" ? <NewsFeedRightSection /> : ""}
           </div>
+
+          <RelatedPostsSection {...params} />
 
           <div className="row">
             <div className="col-lg-8 col-md-12">
