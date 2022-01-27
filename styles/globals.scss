@@ -11217,8 +11217,14 @@ ul.nav
   display: inline-flex;
   .item {
     width: 33.3%;
+    &:nth-child(1) {
+      padding: 0px 10px 0px 0px;
+    }
     &:nth-child(2) {
-      padding: 0px 20px;
+      padding: 0px 10px;
+    }
+    &:nth-child(1) {
+      padding: 0px 0px 0px 10px;
     }
   }
 }
