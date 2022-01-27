@@ -4,7 +4,7 @@ import { useContext } from "react";
 import AppContext from "../../context/AppContext";
 import { useTheme } from "../../context/theme-context";
 
-const PostContentSkeleton = () => {
+function PostContentSkeleton() {
   const theme = useTheme();
   const value = useContext(AppContext);
   const mode = value.state.mode;
@@ -53,6 +53,6 @@ const PostContentSkeleton = () => {
       <Skeleton />
     </div>
   );
-};
+}
 
 export default PostContentSkeleton;

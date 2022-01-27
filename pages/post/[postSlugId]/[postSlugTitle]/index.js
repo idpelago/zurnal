@@ -35,14 +35,11 @@ const PostContent = (props) => {
   };
 
   useEffect(() => {
-    calWidth();
-    handleRouteChange();
-
-    setTimeout(() => {
-      setIsLoaded(true);
-
-      window.FB.XFBML.parse();
-    }, 1000);
+    return new Promise((resolve) => resolve())
+      .then(() => calWidth())
+      .then(() => handleRouteChange())
+      .then(() => setIsLoaded(true))
+      .then(() => window.FB.XFBML.parse());
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import { useContext } from "react";
 import AppContext from "../../context/AppContext";
 import { useTheme } from "../../context/theme-context";
 
-const PostListSkeleton = () => {
+function PostListSkeleton() {
   const theme = useTheme();
 
   const value = useContext(AppContext);
@@ -65,6 +65,6 @@ const PostListSkeleton = () => {
       </div>
     </div>
   );
-};
+}
 
 export default PostListSkeleton;
