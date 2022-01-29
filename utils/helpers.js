@@ -1,8 +1,11 @@
-const baseUrl = process.env.SITE_URL;
+import getConfig from "next/config";
+
 const { publicRuntimeConfig } = getConfig();
+const { APP_ENV, SITE_URL } = publicRuntimeConfig;
+
+const baseUrl = SITE_URL;
 
 export const isProduction = () => {
-  const { APP_ENV } = publicRuntimeConfig;
   let env = APP_ENV;
 
   return env == "production";
