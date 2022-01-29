@@ -14,6 +14,7 @@ module.exports = {
   },
 
   publicRuntimeConfig: {
+    APP_ENV: process.env.NEXT_APP_ENV,
     SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
     GA_TRACKING: process.env.NEXT_PUBLIC_GA_ID,
   },

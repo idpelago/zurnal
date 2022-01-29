@@ -1,7 +1,9 @@
 const baseUrl = process.env.SITE_URL;
+const { publicRuntimeConfig } = getConfig();
 
 export const isProduction = () => {
-  let env = process.env.APP_ENV;
+  const { APP_ENV } = publicRuntimeConfig;
+  let env = APP_ENV;
 
   return env == "production";
 };
