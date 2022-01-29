@@ -1,4 +1,4 @@
-import { parseSitemaps } from "../../../helpers";
+import { parseSitemaps } from "../../../utils/helpers";
 import { getPostsByIdSitemap } from "../../../apis";
 
 export const getServerSideProps = async ({ res, query }) => {

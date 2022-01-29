@@ -12,6 +12,7 @@ import RelatedPostsSection from "../../../../Sections/RelatedPosts";
 import PostCommentSection from "../../../../Sections/PostComment";
 
 import { getPost } from "../../../../apis";
+
 import { processSSR, processThemeCookie } from "../../../../utils/helpers";
 import config from "../../../../utils/config";
 
@@ -57,7 +58,7 @@ const PostContent = (props) => {
 
       window.removeEventListener("resize", calWidth);
     };
-  }, []);
+  }, [router.events]);
 
   useEffect(() => {
     handleRouteChange();

@@ -15,6 +15,7 @@ module.exports = {
 
   publicRuntimeConfig: {
     SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+    GA_TRACKING: process.env.NEXT_PUBLIC_GA_ID,
   },
 
   async rewrites() {

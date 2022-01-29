@@ -1,7 +1,6 @@
-import cookieCutter from "cookie-cutter";
-
 import Script from "next/script";
 import dynamic from "next/dynamic";
+
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -12,8 +11,11 @@ import useScrollRestoration from "../hooks/use-scroll-restoration";
 import AppContext from "../context/AppContext";
 import { ThemeProvider } from "../context/theme-context";
 
+import * as ga from "../utils/gtag";
 import queryFn from "../utils/query-fn";
 import config from "../utils/config";
+
+import { GA_TRACKING } from "../utils/gtag";
 
 import "nprogress/nprogress.css";
 import "../styles/globals.scss";
@@ -44,6 +46,18 @@ const App = ({ Component, pageProps }) => {
 
   const { minWidth } = config;
   const [mode, setMode] = useState();
+  const trackEvents = (url) => {
+    console.log("track");
+    ga.pageview(url);
+  };
+
+  useEffect(() => {
+    router.events.on("routeChangeComplete", trackEvents);
+
+    return () => {
+      router.events.off("routeChangeComplete", trackEvents);
+    };
+  }, [router.events]);
 
   useEffect(() => {
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
@@ -53,6 +67,20 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING}`}
+      />
+      <Script id="ga-analytics">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${GA_TRACKING}');
+          `}
+      </Script>
+
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
         strategy="beforeInteractive"

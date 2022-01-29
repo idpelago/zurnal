@@ -1,5 +1,7 @@
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 
+import { isProduction } from "../utils/helpers";
+
 class Document extends NextDocument {
   static async getInitialProps(ctx) {
     const initialProps = await NextDocument.getInitialProps(ctx);
@@ -10,6 +12,7 @@ class Document extends NextDocument {
   render() {
     let date = new Date();
     let year = date.getFullYear();
+    let isProd = isProduction();
 
     return (
       <Html translate="no">
