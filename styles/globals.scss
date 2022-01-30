@@ -11891,9 +11891,9 @@ label {
         margin-right: 20px;
         min-height: auto !important;
         background: transparent;
-        width: 150px;
-        min-width: 150px !important;
-        max-width: 150px !important;
+        width: 110px;
+        min-width: 110px !important;
+        max-width: 110px !important;
 
         a {
           display: block;
@@ -11902,9 +11902,9 @@ label {
           object-fit: cover;
           object-position: cover;
           min-height: auto !important;
-          width: 150px;
-          min-width: 150px;
-          max-width: 150px;
+          width: 110px;
+          min-width: 110px;
+          max-width: 110px;
         }
       }
     }
@@ -11941,7 +11941,9 @@ label {
     line-height: 30px;
   }
   .utf_post_title.title-medium {
-    line-height: 22px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
     margin-bottom: 10px;
   }
   .utf_post_overaly_style .utf_post_content {
@@ -12243,8 +12245,8 @@ label {
   .utf_post_title {
     // font-size: 18px;
     // line-height: 26px;
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 20px;
   }
   .block.color-orange .utf_post_overaly_style.last {
     margin-top: 40px;
