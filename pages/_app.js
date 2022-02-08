@@ -40,7 +40,6 @@ const getQueryClientConfig = (req) => ({
 const queryClient = new QueryClient(getQueryClientConfig());
 
 const App = ({ Component, pageProps, shouldTrack }) => {
-  console.log("shouldTrack : ", shouldTrack);
   const router = useRouter();
   const children = <Component {...pageProps} />;
   const withLayout = Component.getLayout?.(children)?.(pageProps) ?? children;
