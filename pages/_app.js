@@ -39,14 +39,19 @@ const getQueryClientConfig = (req) => ({
 
 const queryClient = new QueryClient(getQueryClientConfig());
 
-const App = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps, shouldTrack }) => {
+  console.log("shouldTrack : ", shouldTrack);
   const router = useRouter();
   const children = <Component {...pageProps} />;
   const withLayout = Component.getLayout?.(children)?.(pageProps) ?? children;
 
   const { minWidth } = config;
   const [mode, setMode] = useState();
-  const trackEvents = (url) => ga.pageview(url);
+  const trackEvents = (url) => {
+    if (shouldTrack) {
+      ga.pageview(url);
+    }
+  };
 
   useEffect(() => {
     router.events.on("routeChangeComplete", trackEvents);
@@ -105,6 +110,28 @@ const App = ({ Component, pageProps }) => {
       </AppContext.Provider>
     </>
   );
+};
+
+App.getInitialProps = async (context) => {
+  const ctx = context.ctx;
+
+  const { req } = ctx;
+
+  const blacklistedIps = ["::1", "61.222.146.133"];
+  const currentIp =
+    req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+
+  let shouldTrack;
+
+  if (blacklistedIps.includes(currentIp)) {
+    shouldTrack = false;
+  } else {
+    shouldTrack = true;
+  }
+
+  return {
+    shouldTrack,
+  };
 };
 
 export default App;
