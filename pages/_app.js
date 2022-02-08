@@ -46,10 +46,7 @@ const App = ({ Component, pageProps }) => {
 
   const { minWidth } = config;
   const [mode, setMode] = useState();
-  const trackEvents = (url) => {
-    console.log("track");
-    ga.pageview(url);
-  };
+  const trackEvents = (url) => ga.pageview(url);
 
   useEffect(() => {
     router.events.on("routeChangeComplete", trackEvents);
