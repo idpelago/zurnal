@@ -5,7 +5,7 @@ export const getServerSideProps = async ({ res, query }) => {
   const { id } = query;
   const items = await getPostsByIdSitemap(id);
 
-  const sitemap = parseSitemaps(items);
+  const sitemap = parseSitemaps(items, "url");
 
   res.setHeader("Content-Type", "text/xml");
   res.write(sitemap);
