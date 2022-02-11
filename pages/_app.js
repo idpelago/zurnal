@@ -116,7 +116,12 @@ App.getInitialProps = async (context) => {
 
   const { req } = ctx;
 
-  const blacklistedIps = ["::1", "61.222.146.133"];
+  const blacklistedIps = [
+    "::1",
+    "61.222.146.133", // kkbox H 棟
+    "124.218.17.145", // Home ip
+  ];
+
   const currentIp =
     req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
