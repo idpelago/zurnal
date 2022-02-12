@@ -73,3 +73,5 @@ Disallow: /
 
 User-agent: BLEXBot
 Disallow: /
+
+Sitemap: https://www.zurnal.co/sitemap.xml
