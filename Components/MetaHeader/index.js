@@ -37,9 +37,7 @@ function MetaHeader({ title = null, description = null, type = null }) {
       : "Zurnal | Entertain, Inspire & Educate";
 
   const normalizedDescription =
-    description !== null
-      ? `View all posts from ${description} category on Zurnal.co`
-      : "Entertain, Inspire & Educate";
+    description !== null ? `${description}` : "Entertain, Inspire & Educate";
 
   return (
     <Head>
