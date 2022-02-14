@@ -1,5 +1,5 @@
 import getConfig from "next/config";
-import { config } from "../utils/config";
+import config from "../utils/config";
 
 const { publicRuntimeConfig } = getConfig();
 const { APP_ENV, SITE_URL } = publicRuntimeConfig;

@@ -126,7 +126,7 @@ App.getInitialProps = async (context) => {
   const currentIp =
     req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
-  let track = shouldTrack(currentIp);
+  const track = shouldTrack(currentIp);
 
   return {
     track,
