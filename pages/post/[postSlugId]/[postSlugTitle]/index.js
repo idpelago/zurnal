@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 
 import Layout from "../../../../Components/Layout";
 import WithLayout from "../../../../Components/WithLayout";
+import PostShare from "../../../../Components/PostShare";
 
 import PostContentSection from "../../../../Sections/PostContent";
 import NewsFeedRightSection from "../../../../Sections/NewsFeed/RightSide";
@@ -37,8 +38,19 @@ const PostContent = (props) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const refreshAddthis = () => {
+    if (
+      window.addthis !== undefined &&
+      window.addthis.layers.refresh !== undefined
+    ) {
+      window.addthis.init();
+      window.addthis.layers.refresh();
+    }
+  };
+
   useEffect(() => {
     return new Promise((resolve) => resolve())
+      .then(() => refreshAddthis())
       .then(() => calWidth())
       .then(() => handleRouteChange())
       .then(() => setIsLoaded(true))
@@ -78,6 +90,8 @@ const PostContent = (props) => {
 
             {mode == "desktop" ? <NewsFeedRightSection /> : ""}
           </div>
+
+          <PostShare />
 
           <RelatedPostsSection {...params} />
           <PostCommentSection isLoaded={isLoaded} {...params} />

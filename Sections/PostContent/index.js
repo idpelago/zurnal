@@ -71,7 +71,6 @@ const PostContentSection = ({
             <CategoryLink elem={post}>
               <a className="utf_post_cat">{post.category.name}</a>
             </CategoryLink>
-
             <h2 className="utf_post_title">{post.title}</h2>
             <div className="utf_post_meta">
               <span className="utf_post_author">
@@ -130,35 +129,6 @@ const PostContentSection = ({
                   );
                 })}
               </div>
-            </div>
-
-            <div className="share-items clearfix">
-              <ul className="post-social-icons unstyled">
-                <li className="facebook">
-                  <a href="#">
-                    <i className="fa fa-facebook"></i>
-                    <span className="ts-social-title">Facebook</span>
-                  </a>
-                </li>
-                <li className="twitter">
-                  <a href="#">
-                    <i className="fa fa-twitter"></i>
-                    <span className="ts-social-title">Twitter</span>
-                  </a>
-                </li>
-                <li className="gplus">
-                  <a href="#">
-                    <i className="fa fa-google-plus"></i>
-                    <span className="ts-social-title">Google +</span>
-                  </a>
-                </li>
-                <li className="pinterest">
-                  <a href="#">
-                    <i className="fa fa-pinterest"></i>
-                    <span className="ts-social-title">Pinterest</span>
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

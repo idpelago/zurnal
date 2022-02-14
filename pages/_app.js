@@ -86,10 +86,17 @@ const App = ({ Component, pageProps, shouldTrack }) => {
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
         strategy="beforeInteractive"
       />
+
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"
         strategy="beforeInteractive"
       />
+
+      <Script
+        src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6209f866f185a6e6"
+        strategy="lazyOnload"
+      />
+
       <Script src="/scripts/main.js" strategy="beforeInteractive" />
 
       <TopProgressBar />
