@@ -122,6 +122,7 @@ App.getInitialProps = async (context) => {
     "61.222.146.133", // kkbox H 棟
     "124.218.17.145", // Home ip
     "1.200.251.192", // Juan's phone ip
+    "61.222.146.136", // Juan's office ip
   ];
 
   const currentIp =
