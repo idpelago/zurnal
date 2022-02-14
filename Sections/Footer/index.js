@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Sun, Moon } from "react-feather";
 import { useTheme, useThemeUpdate } from "../../context/theme-context";
 
@@ -5,13 +6,33 @@ const FooterSection = () => {
   const theme = useTheme();
   const toggleTheme = useThemeUpdate();
 
+  const year = new Date().getFullYear();
+  const FooterTextFirst = `Copyright © ${year} `;
+  const FooterTextSecond = ` All Rights Reserved`;
+
+  const FooterLink = () => {
+    return (
+      <Link
+        href={{
+          pathname: `/`,
+        }}
+      >
+        Zurnal.co
+      </Link>
+    );
+  };
+
   return (
     <div className="copyright">
       <div className="container">
         <div className="row">
           <div className="col-sm-12 col-md-12 text-center">
             <div className="utf_copyright_info">
-              <span>Copyright © 2021 All Rights Reserved.</span>
+              <span>
+                {FooterTextFirst}
+                <FooterLink />
+                {FooterTextSecond}
+              </span>
             </div>
           </div>
         </div>
@@ -23,10 +44,12 @@ const FooterSection = () => {
         </div>
 
         <div id="theme-switcher" className="theme-switcher">
-          <a onClick={(e) => {
-            e.preventDefault();
-            toggleTheme();
-          }}>
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+              toggleTheme();
+            }}
+          >
             {theme == "dark" ? <Sun /> : <Moon />}
           </a>
         </div>
