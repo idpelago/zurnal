@@ -12519,6 +12519,6 @@ body {
 
 .MuiPaginationItem-outlinedPrimary {
   &.Mui-selected {
-    background-color: red;
+    background-color: red !important;
   }
 }
