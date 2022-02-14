@@ -146,10 +146,18 @@ export const parseSitemaps = (sitemaps, type = "index") => {
         ? `<lastmod>${target.lastMod}</lastmod>`
         : ``;
 
+      let renderFreq =
+        skeletonHeader == "url" ? `<changefreq>daily</changefreq>` : "";
+
+      let renderPriority =
+        skeletonHeader == "url" ? `<priority>0.8</priority>` : "";
+
       let renderItem = `
         <${skeletonHeader}>
           ${renderLocation}
           ${renderTarget}
+          ${renderFreq}
+          ${renderPriority}
         </${skeletonHeader}>
       `;
 
