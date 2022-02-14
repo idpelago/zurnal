@@ -15,6 +15,7 @@ import * as ga from "../utils/gtag";
 import queryFn from "../utils/query-fn";
 import config from "../utils/config";
 
+import { shouldTrack } from "../utils/helpers";
 import { GA_TRACKING } from "../utils/gtag";
 
 import "nprogress/nprogress.css";
@@ -122,29 +123,13 @@ App.getInitialProps = async (context) => {
   const ctx = context.ctx;
 
   const { req } = ctx;
-
-  const blacklistedIps = [
-    "::1",
-    "59.124.110.2", // Jenni's office
-    "61.222.146.133", // kkbox H 棟
-    "124.218.17.145", // Home ip
-    "1.200.251.192", // Juan's phone ip
-    "61.222.146.136", // Juan's office ip
-  ];
-
   const currentIp =
     req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
-  let shouldTrack;
-
-  if (blacklistedIps.includes(currentIp)) {
-    shouldTrack = false;
-  } else {
-    shouldTrack = true;
-  }
+  let track = shouldTrack(currentIp);
 
   return {
-    shouldTrack,
+    track,
   };
 };
 

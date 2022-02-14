@@ -1,9 +1,23 @@
 import getConfig from "next/config";
+import { config } from "../utils/config";
 
 const { publicRuntimeConfig } = getConfig();
 const { APP_ENV, SITE_URL } = publicRuntimeConfig;
 
 const baseUrl = SITE_URL;
+
+export const shouldTrack = (currentIp) => {
+  let shouldTrack;
+  let { blacklistedIps } = config;
+
+  if (blacklistedIps.includes(currentIp)) {
+    shouldTrack = false;
+  } else {
+    shouldTrack = true;
+  }
+
+  return shouldTrack;
+};
 
 export const isProduction = () => {
   let env = APP_ENV;
@@ -55,6 +69,7 @@ export const detectRobot = (userAgent) => {
 
   return robots.test(userAgent);
 };
+
 export const processThemeCookie = (req) => {
   const cookie = req.headers ? req.headers.cookie : null;
   const themeCookie = getHeaderCookie("theme", cookie);
@@ -62,6 +77,7 @@ export const processThemeCookie = (req) => {
 
   return theme;
 };
+
 export const processSSR = async (userAgent, modelQuery, parameters) => {
   const response = {
     props: {},
