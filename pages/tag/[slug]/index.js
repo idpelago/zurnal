@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import NewsFeedSection from "../../../Sections/NewsFeed";
+import FeedsSection from "../../../Sections/Feeds";
 
 import Layout from "../../../Components/Layout";
 import WithLayout from "../../../Components/WithLayout";
@@ -24,11 +24,13 @@ const Tag = (props) => {
     <>
       <MetaHeader
         title={slug}
-        description={`cari semua artikel dengan tagar ${slug} hanya di Zurnal.co`}
+        description={`cari semua artikel dengan tagar #${slug} hanya di Zurnal.co`}
         type="tag"
       />
 
-      <NewsFeedSection {...params} />
+      <h2>Tagar : #{slug}</h2>
+
+      <FeedsSection {...params} />
     </>
   );
 };

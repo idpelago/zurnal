@@ -132,12 +132,6 @@ class Document extends NextDocument {
           <link rel="dns-prefetch" href="//graph.facebook.com" />
           <link rel="dns-prefetch" href="//facebook.com" />
           <link rel="dns-prefetch" href="//connect.facebook.net" />
-
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
-            strategy="lazyload"
-          />
         </Head>
 
         <body>

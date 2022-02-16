@@ -8,8 +8,8 @@ import WithLayout from "../../../../Components/WithLayout";
 import PostShare from "../../../../Components/PostShare";
 
 import PostContentSection from "../../../../Sections/PostContent";
-import NewsFeedRightSection from "../../../../Sections/NewsFeed/RightSide";
-import RelatedPostsSection from "../../../../Sections/RelatedPosts";
+
+// import RelatedPostsSection from "../../../../Sections/RelatedPosts";
 import PostCommentSection from "../../../../Sections/PostComment";
 
 import { getPost } from "../../../../apis";
@@ -54,7 +54,7 @@ const PostContent = (props) => {
       .then(() => calWidth())
       .then(() => handleRouteChange())
       .then(() => setIsLoaded(true))
-      .then(() => window.FB?.XFBML.parse());
+      .then(() => window.FB ?.XFBML.parse());
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {
@@ -83,20 +83,12 @@ const PostContent = (props) => {
         strategy="afterInteractive"
       />
 
-      <section className="utf_block_wrapper">
-        <div className="container">
-          <div className="row">
-            <PostContentSection {...params} />
+      <div className="main-box main-content post-content col-12">
+        <PostContentSection {...params} />
+        <PostShare />
 
-            {mode == "desktop" ? <NewsFeedRightSection /> : ""}
-          </div>
-
-          <PostShare />
-
-          <RelatedPostsSection {...params} />
-          <PostCommentSection isLoaded={isLoaded} {...params} />
-        </div>
-      </section>
+        <PostCommentSection isLoaded={isLoaded} {...params} />
+      </div>
     </>
   );
 };

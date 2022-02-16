@@ -1,10 +1,9 @@
 const PostComment = ({ isLoaded, postSlugId, postSlugTitle }) => {
   return (
-    <div className="row">
-      <div className="col-lg-8 col-md-12">
-        {!isLoaded ? (
-          <>Loading Comments...</>
-        ) : (
+    <div className="comment-wrapper">
+      {!isLoaded ? (
+        <>Loading Comments...</>
+      ) : (
           <>
             <div id="fb-root"></div>
             <div
@@ -17,7 +16,6 @@ const PostComment = ({ isLoaded, postSlugId, postSlugTitle }) => {
             ></div>
           </>
         )}
-      </div>
     </div>
   );
 };

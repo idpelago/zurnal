@@ -1,170 +1,133 @@
 import { useQuery } from "react-query";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
 import Pagination from "@material-ui/lab/Pagination";
 
 import PostMetaHeader from "../../Components/MetaHeader/post";
-import PostContentSkeleton from "../../Components/PostContentSkeleton";
 
 import { CategoryLink, TagLink, UserLink } from "../../utils/link-generator";
 
 const PostContentSection = ({
-  ssrData,
-  isRobot,
-  postSlugId,
-  postSlugTitle,
+    ssrData,
+    isRobot,
+    postSlugId,
+    postSlugTitle,
 }) => {
-  const router = useRouter();
-  const { page: currentPage = 1 } = router.query;
+    const router = useRouter();
+    const { page: currentPage = 1 } = router.query;
 
-  const [page, setPage] = useState(currentPage);
+    const [page, setPage] = useState(currentPage);
 
-  useEffect(() => setPage(currentPage));
+    useEffect(() => setPage(currentPage));
 
-  let dataItems;
+    let dataItems;
 
-  if (!isRobot) {
-    const { isLoading, data } = useQuery(
-      [`post/${postSlugId}/${postSlugTitle}`, { page }],
-      { staleTime: 5 * 60 * 10000 }
-    );
+    if (!isRobot) {
+        const { isLoading, data } = useQuery(
+            [`post/${postSlugId}/${postSlugTitle}`, { page }],
+            { staleTime: 5 * 60 * 10000 }
+        );
 
-    if (isLoading) return <PostContentSkeleton />;
+        if (isLoading) return "Loading...";
 
-    dataItems = data;
-  } else {
-    dataItems = ssrData;
-  }
+        dataItems = data;
+    } else {
+        dataItems = ssrData;
+    }
 
-  if (!dataItems) {
-    router.push("/");
+    if (!dataItems) {
+        router.push("/");
+        return (
+            <div className="col-lg-8 col-md-12">
+                <div className="redirecting">Redirecting ....</div>
+            </div>
+        );
+    }
+
+    const { items: post } = dataItems;
+
+    const handlePaginationChange = (e, value) => {
+        return new Promise((resolve) => resolve()).then(() => {
+            router.push({
+                pathname: router.pathname,
+                query: {
+                    ...router.query,
+                    postSlugId: postSlugId,
+                    postSlugTitle: postSlugTitle,
+                    page: value,
+                },
+            });
+        });
+    };
+
     return (
-      <div className="col-lg-8 col-md-12">
-        <div className="redirecting">Redirecting ....</div>
-      </div>
+        <>
+            <article>
+                <header className="entry-header">
+                    <span className="meta-category">
+                        <CategoryLink elem={post}>
+                            {post.category.name}
+                        </CategoryLink>
+                    </span>
+
+                    <h1 className="entry-title">{post.title}</h1>
+                    <div className="entry-date">{post.published_at}</div>
+                </header>
+
+                <div className="meta-image">
+                    <img
+                        src={post.featured_image}
+                        className="img-fluid"
+                        alt={post.title}
+                    />
+                </div>
+
+                {post.post_paginate_total > 1 && (
+                    <div>
+                        Page {post.post_paginate_current} of {post.post_paginate_total}
+                    </div>
+                )}
+
+                <div
+                    className="entry-content"
+                    dangerouslySetInnerHTML={{
+                        __html: post.content.replace(/(<? *script)/gi, "illegalscript"),
+                    }}
+                ></div>
+
+                {post.post_paginate_total > 1 && (
+                    <>
+                        <h4>Halaman Berikutnya :</h4>
+
+                        <Pagination
+                            count={post.post_paginate_total}
+                            variant="outlined"
+                            color="primary"
+                            className="paging"
+                            page={post.post_paginate_current}
+                            onChange={handlePaginationChange}
+                        />
+                    </>
+                )}
+
+                <div className="tags-area clearfix">
+                    <div className="post-tags">
+                        <span>Tagar:</span>
+                        {post.tags.map((tag, index) => {
+                            return (
+                                <TagLink key={index} elem={tag}>{`#${tag.name}`}</TagLink>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <div className="author-area">
+                    Published by <UserLink elem={post.user}>{post.user.display_name}</UserLink>
+                </div>
+            </article>
+        </>
     );
-  }
-
-  const { items: post } = dataItems;
-
-  const handlePaginationChange = (e, value) => {
-    return new Promise((resolve) => resolve()).then(() => {
-      router.push({
-        pathname: router.pathname,
-        query: {
-          ...router.query,
-          postSlugId: postSlugId,
-          postSlugTitle: postSlugTitle,
-          page: value,
-        },
-      });
-    });
-  };
-
-  return (
-    <>
-      <PostMetaHeader elem={post} />
-
-      <div className="col-lg-8 col-md-12">
-        <div className="single-post">
-          <div className="utf_post_title-area">
-            <CategoryLink elem={post}>
-              <a className="utf_post_cat">{post.category.name}</a>
-            </CategoryLink>
-            <h2 className="utf_post_title">{post.title}</h2>
-            <div className="utf_post_meta">
-              <span className="utf_post_author">
-                By{" "}
-                <UserLink elem={post.user}>{post.user.display_name}</UserLink>
-              </span>
-              <span className="utf_post_date">
-                <i className="fa fa-clock-o"></i> {post.published_at}
-              </span>
-            </div>
-          </div>
-
-          <div className="utf_post_content-area">
-            <div className="post-media post-featured-image">
-              <img
-                src={post.featured_image}
-                className="img-fluid"
-                alt={post.title}
-              />
-            </div>
-
-            {post.post_paginate_total > 1 && (
-              <div>
-                Page {post.post_paginate_current} of {post.post_paginate_total}
-              </div>
-            )}
-
-            <div
-              className="entry-content"
-              dangerouslySetInnerHTML={{
-                __html: post.content.replace(/(<? *script)/gi, "illegalscript"),
-              }}
-            ></div>
-
-            {post.post_paginate_total > 1 && (
-              <>
-                <h4>Halaman Berikutnya :</h4>
-
-                <Pagination
-                  count={post.post_paginate_total}
-                  variant="outlined"
-                  color="primary"
-                  className="paging"
-                  page={post.post_paginate_current}
-                  onChange={handlePaginationChange}
-                />
-              </>
-            )}
-
-            <div className="tags-area clearfix">
-              <div className="post-tags">
-                <span>Tags:</span>
-                {post.tags.map((tag, index) => {
-                  return (
-                    <TagLink key={index} elem={tag}>{`# ${tag.name}`}</TagLink>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* <nav className="post-navigation clearfix">
-          <>
-            <div className="post-previous">
-              {post.previous_post && (
-                <PostLink elem={post.previous_post}>
-                  <a>
-                    <span>
-                      <i className="fa fa-angle-left"></i> Previous Post
-                    </span>
-                    <h3>{post.previous_post.title}</h3>
-                  </a>
-                </PostLink>
-              )}
-            </div>
-
-            <div className="post-next">
-              {post.next_post && (
-                <PostLink elem={post.next_post}>
-                  <a>
-                    <span>
-                      Next Post <i className="fa fa-angle-right"></i>
-                    </span>
-                    <h3>{post.next_post.title}</h3>
-                  </a>
-                </PostLink>
-              )}
-            </div>
-          </>
-        </nav> */}
-      </div>
-    </>
-  );
-};
+}
 
 export default PostContentSection;

@@ -1,22 +1,32 @@
-import Link from "next/link";
+import { useState, useEffect } from "react";
+
+import config from "../../utils/config";
+
+import DesktopMenu from "../../Components/Menus/DesktopMenu";
+import MobileMenu from "../../Components/Menus/MobileMenu";
 
 const HeaderSection = () => {
+  const [mode, setMode] = useState();
+
+  const { minWidth } = config;
+
+  const calWidth = () =>
+    setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
+
+  useEffect(() => calWidth(), [])
+  useEffect(() => {
+    window.addEventListener("resize", calWidth, false);
+
+    return () => {
+      window.removeEventListener("resize", calWidth);
+    }
+  })
+
   return (
-    <header id="header" className="header">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-2 col-sm-2 text-left">
-            <div className="logo desktop-logo">
-              <Link href={{ pathname: `/` }}>
-                <a>
-                  <h1>Zurnal.co</h1>
-                </a>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+    <>
+      {mode == 'mobile' && <MobileMenu />}
+      {mode == 'desktop' && <DesktopMenu />}
+    </>
   );
 };
 

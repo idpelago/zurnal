@@ -1,12 +1,8 @@
-import AdsSection from "../Sections/Ads";
-import FeaturedSection from "../Sections/Featured";
-import NewsFeedSection from "../Sections/NewsFeed";
-import CategoriesFeedSection from "../Sections/CategoriesFeed";
-import HorizontalFeedSection from "../Sections/HorizontalFeed";
-
 import Layout from "../Components/Layout";
 import WithLayout from "../Components/WithLayout";
 import MetaHeader from "../Components/MetaHeader";
+
+import FeedsSection from "../Sections/Feeds";
 
 import { getPosts } from "../apis";
 import { processSSR, processThemeCookie } from "../utils/helpers";
@@ -19,13 +15,7 @@ const Index = (props) => {
     <>
       <MetaHeader type="index" />
 
-      {/* <FeaturedSection /> */}
-      {/* <CategoriesFeedSection /> */}
-      {/* <HorizontalFeedSection /> */}
-
-      <NewsFeedSection {...params} />
-
-      {/* <AdsSection /> */}
+      <FeedsSection {...params} />
     </>
   );
 };

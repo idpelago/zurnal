@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import NewsFeedSection from "../../../Sections/NewsFeed";
+import FeedsSection from "../../../Sections/Feeds";
 
 import Layout from "../../../Components/Layout";
 import WithLayout from "../../../Components/WithLayout";
@@ -28,7 +28,9 @@ const User = (props) => {
         type="user"
       />
 
-      <NewsFeedSection {...params} />
+      <h2>User : {username}</h2>
+
+      <FeedsSection {...params} />
     </>
   );
 };
