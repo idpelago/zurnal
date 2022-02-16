@@ -4,67 +4,67 @@ const FooterCategories = () => {
             <div className="center-categories col-12">
                 <ul className="list-tag list-unstyled">
                     <li>
-                        <a href="#art/">Art</a>
+                        <a href="#">Art</a>
                     </li>
                     <li>
-                        <a href="#automotive/">Automotive</a>
+                        <a href="#">Automotive</a>
                     </li>
                     <li>
-                        <a href="#business/">Business</a>
+                        <a href="#">Business</a>
                     </li>
                     <li>
-                        <a href="#career/">Career</a>
+                        <a href="#">Career</a>
                     </li>
                     <li>
-                        <a href="#cool/">Cool</a>
+                        <a href="#">Cool</a>
                     </li>
                     <li>
-                        <a href="#culinary/">Culinary</a>
+                        <a href="#">Culinary</a>
                     </li>
                     <li>
-                        <a href="#entertainment/">Entertainment</a>
+                        <a href="#">Entertainment</a>
                     </li>
                     <li>
-                        <a href="#fauna/">Fauna</a>
+                        <a href="#">Fauna</a>
                     </li>
                     <li>
-                        <a href="#featured/">Featured</a>
+                        <a href="#">Featured</a>
                     </li>
                     <li>
-                        <a href="#health/">Health</a>
+                        <a href="#">Health</a>
                     </li>
                     <li>
-                        <a href="#humor/">Humor</a>
+                        <a href="#">Humor</a>
                     </li>
                     <li>
-                        <a href="#inspiration/">Inspiration</a>
+                        <a href="#">Inspiration</a>
                     </li>
                     <li>
-                        <a href="#knowledge/">Knowledge</a>
+                        <a href="#">Knowledge</a>
                     </li>
                     <li>
-                        <a href="#life/">Life</a>
+                        <a href="#">Life</a>
                     </li>
                     <li>
-                        <a href="#literature/">Literature</a>
+                        <a href="#">Literature</a>
                     </li>
                     <li>
-                        <a href="#news/">News</a>
+                        <a href="#">News</a>
                     </li>
                     <li>
-                        <a href="#others/">Others</a>
+                        <a href="#">Others</a>
                     </li>
                     <li>
-                        <a href="#relationship/">Relationship</a>
+                        <a href="#">Relationship</a>
                     </li>
                     <li>
-                        <a href="#sport/">Sport</a>
+                        <a href="#">Sport</a>
                     </li>
                     <li>
-                        <a href="#tech/">Tech</a>
+                        <a href="#">Tech</a>
                     </li>
                     <li>
-                        <a href="#travel/">Travel</a>
+                        <a href="#">Travel</a>
                     </li>
                 </ul>
             </div>
