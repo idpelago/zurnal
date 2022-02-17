@@ -29,9 +29,9 @@ const FooterSection = () => {
           <div className="vce-wrap-left">
             <p>
               <span id="copyRightFooter">
-                <FooterTextFirst />
+                {FooterTextFirst}
                 <FooterLink />
-                <FooterTextSecond />
+                {FooterTextSecond}
               </span>
             </p>
           </div>

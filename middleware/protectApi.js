@@ -3,8 +3,6 @@ import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 const { APP_ENV, SITE_URL } = publicRuntimeConfig;
 
-console.log("APP_ENV, SITE_URL : ", APP_ENV, SITE_URL);
-
 const protectApi = (handler) => {
   return async (req, res) => {
     if (
