@@ -44,7 +44,7 @@ const queryClient = new QueryClient(getQueryClientConfig());
 const App = ({ Component, pageProps, shouldTrack }) => {
   const router = useRouter();
   const children = <Component {...pageProps} />;
-  const withLayout = Component.getLayout ?.(children) ?.(pageProps) ?? children;
+  const withLayout = Component.getLayout?.(children)?.(pageProps) ?? children;
 
   const { minWidth } = config;
   const [mode, setMode] = useState();
@@ -71,9 +71,7 @@ const App = ({ Component, pageProps, shouldTrack }) => {
   return (
     <>
       <Head>
-        // Responsive meta tag
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        // bootstrap CDN
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -111,8 +109,6 @@ const App = ({ Component, pageProps, shouldTrack }) => {
         src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6209f866f185a6e6"
         strategy="lazyOnload"
       />
-
-      <Script src="/scripts/main.js" strategy="beforeInteractive" />
 
       <TopProgressBar />
 
