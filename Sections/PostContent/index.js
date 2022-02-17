@@ -83,11 +83,13 @@ const PostContentSection = ({
           />
         </div>
 
-        {post.post_paginate_total > 1 && (
-          <div>
-            Page {post.post_paginate_current} of {post.post_paginate_total}
-          </div>
-        )}
+        <div className="pagination-area">
+          {post.post_paginate_total > 1 && (
+            <div>
+              Page {post.post_paginate_current} of {post.post_paginate_total}
+            </div>
+          )}
+        </div>
 
         <div
           className="entry-content"
@@ -96,20 +98,22 @@ const PostContentSection = ({
           }}
         ></div>
 
-        {post.post_paginate_total > 1 && (
-          <>
-            <h4>Halaman Berikutnya :</h4>
+        <div className="pagination-area">
+          {post.post_paginate_total > 1 && (
+            <>
+              <h4>Halaman Berikutnya :</h4>
 
-            <Pagination
-              count={post.post_paginate_total}
-              variant="outlined"
-              color="primary"
-              className="paging"
-              page={post.post_paginate_current}
-              onChange={handlePaginationChange}
-            />
-          </>
-        )}
+              <Pagination
+                count={post.post_paginate_total}
+                variant="outlined"
+                color="primary"
+                className="paging"
+                page={post.post_paginate_current}
+                onChange={handlePaginationChange}
+              />
+            </>
+          )}
+        </div>
 
         <div className="tags-area clearfix">
           <div className="post-tags">

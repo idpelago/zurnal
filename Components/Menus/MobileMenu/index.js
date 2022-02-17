@@ -24,7 +24,9 @@ const MobileMenu = () => {
                     <i className="fa fa-bars"></i>
                 </div>
                 <div className="center-section">
-                    <Link href={{ pathname: `/` }}>Zurnal.co</Link>
+                    <Link href={{ pathname: `/` }}>
+                        <img src="https://www.zurnal.co/images/zurnal_logo.png" />
+                    </Link>
                 </div>
                 <div className="right-section">
                     <i className="fa fa-search"></i>

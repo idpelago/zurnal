@@ -56,7 +56,9 @@ const DesktopMenu = () => {
                     <div className="row">
                         <div className="col-4">
                             <div className="site-brand">
-                                <Link href={{ pathname: `/` }}>Zurnal.co</Link>
+                                <Link href={{ pathname: `/` }}>
+                                    <img src="https://www.zurnal.co/images/zurnal_logo.png" />
+                                </Link>
                             </div>
                         </div>
                     </div>
