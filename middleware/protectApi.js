@@ -1,10 +1,13 @@
-const SITE_URL = process.env.SITE_URL;
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+const { APP_ENV, SITE_URL } = publicRuntimeConfig;
 
 const protectApi = (handler) => {
   return async (req, res) => {
     if (
-      !req.headers.referer ||
-      new URL(req.headers.referer).origin !== SITE_URL
+      APP_ENV == "production" &&
+      (!req.headers.referer || new URL(req.headers.referer).origin !== SITE_URL)
     ) {
       return res.status(403).json({ success: false, message: `Forbidden` });
     }
