@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+
+import config from "../../utils/config";
+
 import HeaderSection from "../../Sections/Header";
 import SidebarSection from "../../Sections/Sidebar";
 import FooterSection from "../../Sections/Footer";
@@ -9,6 +13,22 @@ const Layout = ({ children }) => {
   const { props } = children;
 
   useThemeSetter(props);
+
+  const [mode, setMode] = useState();
+
+  const { minWidth } = config;
+
+  const calWidth = () =>
+    setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
+
+  useEffect(() => calWidth(), [])
+  useEffect(() => {
+    window.addEventListener("resize", calWidth, false);
+
+    return () => {
+      window.removeEventListener("resize", calWidth);
+    }
+  })
 
   return (
     <>
@@ -23,12 +43,12 @@ const Layout = ({ children }) => {
               <SidebarSection />
             </div>
 
-            <FooterCategoriesSection />
+            {mode == 'desktop' && <FooterCategoriesSection />}
           </div>
         </div>
       </div>
 
-      <FooterSection />
+      {mode == 'desktop' && <FooterSection />}
     </>
   );
 };
