@@ -58,8 +58,8 @@ const Feeds = ({
 
   const { data: posts } = items;
 
-  const handlePaginationChange = (e, value) => {
-    return new Promise((resolve) => resolve()).then(() => {
+  const handlePaginationChange = async (e, value) => {
+    return await new Promise((resolve) => resolve()).then(() => {
       router.push(
         {
           pathname: router.pathname,
