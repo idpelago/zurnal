@@ -60,13 +60,17 @@ const Feeds = ({
 
   const handlePaginationChange = (e, value) => {
     return new Promise((resolve) => resolve()).then(() => {
-      router.push({
-        pathname: router.pathname,
-        query: {
-          ...router.query,
-          page: value,
+      router.push(
+        {
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            page: value,
+          },
         },
-      });
+        undefined,
+        { scroll: true }
+      );
     });
   };
 
