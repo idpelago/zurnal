@@ -75,7 +75,7 @@ const App = ({ Component, pageProps, shouldTrack }) => {
     ];
 
     styles.map((style) => loadStylesheet(style));
-    scripts.map((script) => loadScript(script));
+    scripts.map((script) => loadScript(false, script));
   }, []);
 
   useScrollRestoration(router);
