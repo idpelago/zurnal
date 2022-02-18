@@ -16,7 +16,7 @@ import * as ga from "../utils/gtag";
 import queryFn from "../utils/query-fn";
 import config from "../utils/config";
 
-import { shouldTrack, loadStylesheet } from "../utils/helpers";
+import { shouldTrack, loadStylesheet, loadScript } from "../utils/helpers";
 import { GA_TRACKING } from "../utils/gtag";
 
 import "nprogress/nprogress.css";
@@ -68,6 +68,9 @@ const App = ({ Component, pageProps, shouldTrack }) => {
     loadStylesheet(
       "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
     );
+    loadScript(
+      "https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6209f866f185a6e6"
+    );
   }, []);
 
   useScrollRestoration(router);
@@ -97,11 +100,6 @@ const App = ({ Component, pageProps, shouldTrack }) => {
 
       <Script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        strategy="lazyOnload"
-      />
-
-      <Script
-        src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6209f866f185a6e6"
         strategy="lazyOnload"
       />
 
