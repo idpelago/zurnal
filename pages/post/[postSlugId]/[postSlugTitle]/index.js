@@ -54,7 +54,7 @@ const PostContent = (props) => {
       .then(() => calWidth())
       .then(() => handleRouteChange())
       .then(() => setIsLoaded(true))
-      .then(() => window.FB ?.XFBML.parse());
+      .then(() => window.FB?.XFBML.parse());
   }, [postSlugId, postSlugTitle]);
 
   useEffect(() => {

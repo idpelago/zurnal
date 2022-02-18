@@ -21,14 +21,14 @@ const Layout = ({ children }) => {
   const calWidth = () =>
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
 
-  useEffect(() => calWidth(), [])
+  useEffect(() => calWidth(), []);
   useEffect(() => {
     window.addEventListener("resize", calWidth, false);
 
     return () => {
       window.removeEventListener("resize", calWidth);
-    }
-  })
+    };
+  });
 
   return (
     <>
@@ -43,12 +43,12 @@ const Layout = ({ children }) => {
               <SidebarSection />
             </div>
 
-            {mode == 'desktop' && <FooterCategoriesSection />}
+            {mode == "desktop" && <FooterCategoriesSection />}
           </div>
         </div>
       </div>
 
-      {mode == 'desktop' && <FooterSection />}
+      {mode == "desktop" && <FooterSection />}
     </>
   );
 };

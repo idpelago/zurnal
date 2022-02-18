@@ -15,7 +15,7 @@ const User = (props) => {
 
   const queryKey = `user/${username}`;
   const params = {
-    pageType: `${username}'s`,
+    pageType: `User : ${username}`,
     queryKey,
     ...props,
   };
@@ -27,8 +27,6 @@ const User = (props) => {
         description={`cari semua artikel dari ${username} hanya di Zurnal.co`}
         type="user"
       />
-
-      <h2>User : {username}</h2>
 
       <FeedsSection {...params} />
     </>

@@ -183,3 +183,36 @@ export const parseSitemaps = (sitemaps, type = "index") => {
 
   return sitemapSkeleton(items, type);
 };
+
+export function loadScript(isSupport, src) {
+  return new Promise((resolve) => {
+    if (isSupport) {
+      return resolve();
+    }
+    let dom = document.querySelector(`script[src="${src}"]`);
+    if (dom) {
+      const prevCallback = dom.onload ? dom.onload.bind(dom) : null;
+      return (dom.onload = () => {
+        if (prevCallback) {
+          prevCallback();
+        }
+        resolve();
+      });
+    }
+    let script = document.createElement("script");
+    script.async = true;
+    script.src = src;
+    script.onload = resolve;
+    document.head.appendChild(script);
+  });
+}
+
+export function loadStylesheet(href) {
+  return new Promise((resolve) => {
+    let link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    link.onload = resolve;
+    document.head.appendChild(link);
+  });
+}

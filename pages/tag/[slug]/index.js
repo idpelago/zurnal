@@ -15,7 +15,7 @@ const Tag = (props) => {
 
   const queryKey = `tag/${slug}`;
   const params = {
-    pageType: `# ${slug}`,
+    pageType: `Tagar : #${slug}`,
     queryKey,
     ...props,
   };
@@ -27,8 +27,6 @@ const Tag = (props) => {
         description={`cari semua artikel dengan tagar #${slug} hanya di Zurnal.co`}
         type="tag"
       />
-
-      <h2>Tagar : #{slug}</h2>
 
       <FeedsSection {...params} />
     </>

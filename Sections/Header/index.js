@@ -13,19 +13,19 @@ const HeaderSection = () => {
   const calWidth = () =>
     setMode(window.innerWidth < minWidth ? "mobile" : "desktop");
 
-  useEffect(() => calWidth(), [])
+  useEffect(() => calWidth(), []);
   useEffect(() => {
     window.addEventListener("resize", calWidth, false);
 
     return () => {
       window.removeEventListener("resize", calWidth);
-    }
-  })
+    };
+  });
 
   return (
     <>
-      {mode == 'mobile' && <MobileMenu />}
-      {mode == 'desktop' && <DesktopMenu />}
+      {mode == "mobile" && <MobileMenu />}
+      {mode == "desktop" && <DesktopMenu />}
     </>
   );
 };
