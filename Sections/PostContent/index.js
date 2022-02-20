@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Pagination from "@material-ui/lab/Pagination";
 
 import PostMetaHeader from "../../Components/MetaHeader/post";
+import PostJsonLd from "../../Components/JsonLd";
 
 import { CategoryLink, TagLink, UserLink } from "../../utils/link-generator";
 
@@ -63,6 +64,7 @@ const PostContentSection = ({
 
   return (
     <>
+      <PostJsonLd elem={post} />
       <PostMetaHeader elem={post} />
 
       <article>
