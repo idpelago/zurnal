@@ -20,7 +20,7 @@ const PostJsonLd = ({ elem }) => {
     };
 
     const getStructDate = (dateTime) => {
-        let date = new Date(parseInt(dateTime)).toISOString();
+        let date = new Date(dateTime).toISOString();
 
         return parseISO8601(date);
     };
