@@ -16,7 +16,7 @@ import * as ga from "../utils/gtag";
 import queryFn from "../utils/query-fn";
 import config from "../utils/config";
 
-import { shouldTrack, loadStylesheet, loadScript } from "../utils/helpers";
+import { shouldTrack, loadStylesheet } from "../utils/helpers";
 import { GA_TRACKING } from "../utils/gtag";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -70,12 +70,7 @@ const App = ({ Component, pageProps, shouldTrack }) => {
       "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css",
     ];
 
-    const scripts = [
-      "https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6209f866f185a6e6",
-    ];
-
     styles.map((style) => loadStylesheet(style));
-    scripts.map((script) => loadScript(false, script));
   }, []);
 
   useScrollRestoration(router);

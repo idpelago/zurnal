@@ -14,7 +14,7 @@ import PostCommentSection from "../../../../Sections/PostComment";
 
 import { getPost } from "../../../../apis";
 
-import { processSSR, processThemeCookie } from "../../../../utils/helpers";
+import { processSSR, processThemeCookie, loadScript } from "../../../../utils/helpers";
 import config from "../../../../utils/config";
 
 const PostContent = (props) => {
@@ -38,6 +38,14 @@ const PostContent = (props) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const loadAddthis = () => {
+    const scripts = [
+      "https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6209f866f185a6e6",
+    ];
+
+    scripts.map((script) => loadScript(false, script));
+  }
+
   const refreshAddthis = () => {
     if (
       window.addthis !== undefined &&
@@ -50,6 +58,7 @@ const PostContent = (props) => {
 
   useEffect(() => {
     return new Promise((resolve) => resolve())
+      .then(() => loadAddthis())
       .then(() => refreshAddthis())
       .then(() => calWidth())
       .then(() => handleRouteChange())
