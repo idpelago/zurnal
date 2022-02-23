@@ -38,9 +38,10 @@ const PostContent = (props) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const loadAddthis = () => {
+  const loadScripts = () => {
     const scripts = [
       "https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6209f866f185a6e6",
+      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6983942794145260"
     ];
 
     scripts.map((script) => loadScript(false, script));
@@ -58,7 +59,7 @@ const PostContent = (props) => {
 
   useEffect(() => {
     return new Promise((resolve) => resolve())
-      .then(() => loadAddthis())
+      .then(() => loadScripts())
       .then(() => refreshAddthis())
       .then(() => calWidth())
       .then(() => handleRouteChange())
